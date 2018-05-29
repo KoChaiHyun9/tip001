@@ -1,0 +1,8 @@
+// /home/test1/koch/proto/maum/brain/stt/train/eval.proto
+enum EvalUnit {
+    EVAL_SYLLABLE_UNIT = 0;
+    EVAL_WORD_UNIT = 1;
+    EVAL_KEYWORD_UNIT = 2;
+}
+syntax = "proto3";
+package maum.brain.stt.train;

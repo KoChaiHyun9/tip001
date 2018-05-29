@@ -1,0 +1,13 @@
+// /home/test1/koch/proto/maum/mlt/paraphrase/paraphrase.proto
+message ParaphraseRequest {
+  ParaphraseType type=1;	// 문장확장을 적용한 타입
+  repeated string origins = 2; 	// 확장할 문장을 여러개 전달한다. 각 문장단위로 다수개의 문장으로 확장된다.
+}
+syntax = "proto3";
+// paraphrase : 바꾸어 말하다
+// 주어진 원문 하나에 대해
+//	도치 확장: 문장의 구성요소의 순서를 변경하여, 새로운 문장들을 생성한다.
+//	워드임베딩 확장 : 문장내 명사에 대해 워드 임베딩을 적용한 단어들을 구해, 원 단어를 교체하면서 새로운 문장들을 생성한다.
+//	동의어 확장 : 문장내 명사에 대해 명사 동의어 사전에 등록된 단어들로 원 단어를 교체하면서 새로운 문장들을 생성한다.
+//	어미 확장 : 문장내 마지막 어미에 대해 어미 사전에 등록된 어미들로 교체하면서 새로운 문장들을 생성한다.
+package maum.mlt.paraphrase;

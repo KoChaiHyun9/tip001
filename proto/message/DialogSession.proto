@@ -1,0 +1,55 @@
+// /home/test1/koch/proto/maum/m2u/server/session.proto
+message DialogSession {
+  int64 id = 1;
+  string chatbot = 2;
+  string user_key = 3;
+  google.protobuf.Struct contexts = 4;
+  google.protobuf.Duration duration = 5;
+  bool human_assisted = 6;
+  string name = 7;
+  Agent current_agent = 8;
+  maum.m2u.common.MediaType output = 9;
+  string intent_finder = 10;
+  bool valid = 15;
+  bool active = 16;
+  google.protobuf.Timestamp started_at = 20;
+  google.protobuf.Timestamp talked_at = 21;
+  maum.m2u.facade.Caller caller = 30;
+  string peer = 31;
+  int32 warned_talk_count = 41;
+  ConfidenceLevel cl = 42;
+  float last_cl_result = 43;
+  bool interfered = 44;
+  repeated AgentUserAttribute agent_user_attrs = 50;
+  // 디바이스 정보
+  string device_token = 51;
+  maum.m2u.facade.Device device_info = 52;
+  // Peek Answer 상태 flag
+  bool is_peek_answered = 61;
+  string peek_answer = 62;
+  string transit_chatbot = 63;
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "google/protobuf/empty.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/common/mediatype.proto";
+import "maum/m2u/facade/dialog.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/cl.proto";
+import "maum/m2u/facade/front.proto";
+/// ADMIN
+/// ADMIN
+// 한턴의 대화 전체 기록
+// agent 정보
+// 세션 정보
+// 세션 요약 정보
+// 상세 세션 정보
+// 세션 요약 정보 목록
+// 세션 응답 상태
+// Confidence Level을 구하는 작업과 관련된 작업들
+// 아래의 모든 작업은 auth.key meta를 항상 요구한다.
+// 신뢰레벨 파라미터

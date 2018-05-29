@@ -1,0 +1,41 @@
+// /home/test1/koch/proto/maum/m2u/server/dam.proto
+service DialogAgentManager {
+  // specify dam name
+  rpc SetDamName (DamKey) returns (DialogAgentManagerStat);
+  // clear dam name
+  rpc ClearDamName (DamKey) returns (DialogAgentManagerStat) {
+    option deprecated = true;
+  };
+  // Empty DA register
+  rpc AddExecutableDA (DamDialogAgentResource) returns (DialogAgentManagerStat) {
+    option deprecated = true;
+  };
+  // Delete DA
+  rpc RemoveExecutableDA (DialogAgentExecutables) returns (DialogAgentManagerStat) {
+    option deprecated = true;
+  };
+  // DA instance start
+  rpc RunDialogAgentInstance (RunDialogAgentInstanceParam) returns (DialogAgentManagerStat) {
+    option deprecated = true;
+  };
+  // DA intance stop
+  rpc StopDialogAgentInstance (DialogAgentInstances) returns (DialogAgentManagerStat) {
+    option deprecated = true;
+  };
+  // Get Runtime Parameters
+  rpc GetRuntimeParameters (DialogAgentName) returns (maum.m2u.da.RuntimeParameterList);
+  // Get Provider Parameters
+  rpc GetProviderParameter (DialogAgentName) returns (maum.m2u.da.DialogAgentProviderParam);
+  // Get UserAttibutes
+  rpc GetUserAttributes (DialogAgentName) returns (maum.m2u.common.UserAttributeList);
+  // Get Executable DA list
+  rpc GetExecutableDA (google.protobuf.Empty) returns (DialogAgentExecutables);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/m2u/common/userattr.proto";
+import "maum/m2u/da/provider.proto";
+package maum.m2u.server;
+//
+// Dialog Agent Manager API
+//

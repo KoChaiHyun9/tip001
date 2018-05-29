@@ -1,0 +1,22 @@
+// /home/test1/koch/proto/maum/brain/tts/speech.proto
+service SpeechSynthesizerService {
+  rpc Speak (SpeakRequest) returns (stream SpeakResponse);
+}
+/**
+ * maum.ai BRAIN TTS 에서 사용하는 공통 데이터 포맷
+ * SPEECH 관련 타입을 정의합니다.
+ * TTS 데이터 타입
+ *
+ * namespace: maum.brain.tts
+ */
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "maum/common/audioencoding.proto";
+option cc_enable_arenas = true;
+package maum.brain.tts;
+/**
+ * TTS 관련 AsyncInterface를 호출할 때 사용될 수 있는 파라미터.
+ */
+//
+// 음성 출력을 내보낸다.
+//

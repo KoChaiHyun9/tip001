@@ -1,0 +1,7 @@
+// /home/test1/koch/proto/maum/m2u/server/imageclass.proto
+message ImageClass {
+  string classified = 1;
+  float probability = 2;
+}
+syntax = "proto3";
+package maum.m2u.server;

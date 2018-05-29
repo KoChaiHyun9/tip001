@@ -1,0 +1,34 @@
+// /home/test1/koch/proto/maum/supervisor/monitor.proto
+message SupervisorServerGroupList {
+  repeated SupervisorServerGroup svd_svr_grp_list = 2;
+}
+/**
+ * supervisor monitor 서비스
+ */
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package maum.supervisor;
+/**
+ * 수퍼바이저 모니터
+ */
+/**
+ * 결과값 처리
+ */
+/**
+ * 수퍼바이저 서버 그룹 목록
+ */
+/**
+ * 서버 그룹
+ */
+/**
+ * 수퍼바이저 프로세스
+ */
+/**
+ * 수퍼바이저 서버 그룹 키
+ */
+/**
+ * 수퍼바이저 프로세스 키
+ */
+/**
+ * 로그
+ */

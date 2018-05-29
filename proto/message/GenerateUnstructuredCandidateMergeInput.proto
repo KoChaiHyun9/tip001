@@ -1,0 +1,8 @@
+// /home/test1/koch/proto/maum/brain/qa/generate_unstructured_candidate_merge.proto
+message GenerateUnstructuredCandidateMergeInput {
+  string bm25Result = 10; 
+  string ticResult = 20; 
+  string booleanResult = 30; 
+}
+syntax = "proto3";
+package maum.brain.qa;

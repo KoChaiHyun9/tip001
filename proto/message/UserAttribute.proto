@@ -1,0 +1,9 @@
+// /home/test1/koch/proto/maum/m2u/facade/userattr.proto
+message UserAttribute {
+  string name = 1;
+  DataType type = 2;
+  string desc = 3;
+  string title = 4;
+};
+syntax = "proto3";
+package maum.m2u.facade;

@@ -1,0 +1,117 @@
+// /home/test1/koch/proto/maum/m2u/common/directive.proto
+message ClovaAudioPlayPayload {
+  // directive body 선언
+  message DirectiveBody {
+    // 제휴사 구분 코드
+    string service_name = 1;
+    // Play 정보 제공
+    // REPLACE_ALL : 현재 스트림과 대기열에 있는 스트림을 즉시 바꾼 후 플레이 한다
+    // ENQUE : 스트림을 현재 큐 끝에 추가한다.
+    // REPLACE_ENQUE : 대기열의 모든 스트림을 바꾸며 현재 재생 중인 스트림에는 영향을 주지 않는다.
+    string play_behavior = 2;
+    // Play 중인 경우 offset 정보를 전송 하기 위한 주기 정보(초 단위)
+    string progress_report_interval = 3;
+    // Play 해야 할 List의 Index
+    string play_index = 4;
+    // Play List Count
+    int32 play_list_count = 5;
+  }
+  // directive body 선언
+  DirectiveBody directive_body = 1;
+  // playList에 전달될 오디오 아이템에 대한 메타 정보
+  message MetaInfo {
+    // tem.url 의 만료(유효) 시간
+    string expiry_time = 1;
+    // 앨범 ID/팟캐트 ID/방송국 ID/뉴스 타입 ID
+    string category_id = 2;
+    // 앨범 명/팟캐트 명/방송국 명/뉴스 타입 명
+    string category_name = 3;
+    // 곡 명/에피소드 명/라디오 채널 명/뉴스 채널 명
+    string audio_name = 4;
+    // 장르 코드/분야 코드
+    string genre_id = 5;
+    // 장르 명/분야 명
+    string genre_name = 6;
+    // 가수 명/진행자 명
+    string artist_name = 7;
+    // 가수 아이디/진행자 아이디
+    string artist_id = 8;
+    // 성인 컨텐츠 여부
+    string is_adult_yn = 9;
+    // 앨범 이미지
+    string image_url = 10;
+    // 좋아요 여부
+    string is_like = 11;
+    // 좋아요 숫자
+    int32 like_count = 12;
+    // 오디오의 재생 시간
+    google.protobuf.Duration running_time = 13;
+    // 컨텐츠 생성일
+    string created_date = 14;
+    // 컨텐츠 수정일
+    string update_date = 15;
+  }
+  // Play List 정보
+  message PlayList {
+    // 아이템 정보
+    message Item {
+      // List의 Index
+      string index = 1;
+      // 현재 오디오에 식별 정보를 제공.
+      // 곡 ID/에피소드 ID/라디오 채널 ID/뉴스 채널 ID
+      string item_id = 2;
+      // 오디오 Play Url
+      string url = 3;
+      // 지시어를 수행 하기전 Delay 해야 할 시간 (ms 단위)
+      string interval_time = 4;
+      // 스트림에서 오디오가 재생을 시작해야하는 위치정보이며 값이 0일 경우 처음부터 재생하며
+      // 다른값이 오면 그값부터 재생을 시작.(ms 단위)
+      string offset_play_in_time = 5;
+      // 오디오 아이템에 대한 메타 정보
+      MetaInfo meta_info = 6;
+    }
+    repeated Item item = 1;
+  }
+  PlayList play_list = 2;
+}
+/**
+ * maum.ai M2U 플랫폼, 대화 진행에 관련된 디렉티브 타입 데이터 정의
+ *
+ * 여기에 정의된 디렉티브들은 dilaog agent에서 router를 경유하여 map으로 전송한다.
+ * map에서는 이들 directive을 각각 정의된 interface/operation으로 전달해야 한다.
+ *
+ * namespace: maum.m2u.common
+ */
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+import "google/protobuf/duration.proto";
+import "maum/m2u/common/event.proto";
+package maum.m2u.common;
+// ----------------------------------------------------------------------
+// 디렉티브
+// ----------------------------------------------------------------------
+/**
+ * DA에서 단말로 내려보내는 디렉티브의 구조
+ */
+// DA에서 단말로 내려보내주는 PAYLOAD
+// 아바타 출력을 위한 페이로드
+// 오디오 출력을 위한 페이로드
+// 사용자에게 오디오 스트림또는 오디오 파일을 스피커로 출력하도록 지시한다.
+// Clova 오디오 출력을 위한 페이로드
+/**
+ * 오디오 출력의 중지
+ */
+/**
+ * 비디오 출력을 위한 페이로드
+ */
+// 단말에 대화 처리에 대한 일부 데이터 위임을 하는 경우에 대한 처리
+// 모든 처리를 SKIP하기 위해서 최대한 상세한 정보를 넘겨주도록 한다.
+/**
+ * 대화 위임을 위한 Directive 데이터
+ */
+/**
+ * 인증 처리를 위한 페이로드
+ */
+/**
+ * 단말 정보 획득 위한 페이로드
+ */

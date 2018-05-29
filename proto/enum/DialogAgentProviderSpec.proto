@@ -1,0 +1,12 @@
+// /home/test1/koch/proto/maum/m2u/da/provider.proto
+enum DialogAgentProviderSpec {
+  DAP_SPEC_UNSPECIFIED = 0;
+  DAP_SPEC_V_1 = 1; // same as UNSPECIFIED
+  DAP_SPEC_V_2 = 2;
+  DAP_SPEC_V_2_P1 = 3;
+  DAP_SPEC_V_3 = 30;
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.da;

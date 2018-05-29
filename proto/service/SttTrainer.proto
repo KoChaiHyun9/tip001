@@ -1,0 +1,20 @@
+// /home/test1/koch/proto/maum/brain/stt/train/s3train.proto
+service SttTrainer {
+    rpc Open (SttModel) returns (TrainKey);
+    rpc GetProgress (TrainKey) returns (TrainStatus);
+    rpc GetBinary (TrainKey) returns (stream TrainBinary);
+    rpc Close (TrainKey) returns (TrainStatus);
+    rpc Stop (TrainKey) returns (TrainStatus);
+    rpc GetAllProgress (google.protobuf.Empty) returns (TrainStatusList);
+    rpc RemoveBinary (TrainKey) returns (google.protobuf.Empty);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+package maum.brain.stt.train;
+//
+// DNN Classifier trainer service
+// INTERNAL USE ONLY
+// IF REMOTE is not 127.0.0.1, then reject it

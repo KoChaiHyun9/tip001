@@ -1,0 +1,7 @@
+// /home/test1/koch/proto/maum/brain/stt/train/eval.proto
+message EvalRequest {
+    repeated EvalPair pairs = 1;
+    EvalUnit unit_type = 2;
+}
+syntax = "proto3";
+package maum.brain.stt.train;

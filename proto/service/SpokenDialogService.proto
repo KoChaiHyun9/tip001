@@ -1,0 +1,27 @@
+// /home/test1/koch/proto/maum/brain/sds/sds.proto
+service SpokenDialogService {
+  rpc Ping (maum.brain.sds.ModelGroup) returns (maum.brain.sds.ServerStatus);
+  rpc Open (DialogueParam) returns (OpenResult);
+  rpc Understand (SdsQuery) returns (Intent);
+  rpc GenerateEntities (Entities) returns (SdsUtter);
+  rpc Close (DialogueParam) returns (google.protobuf.Empty);
+  rpc GetFeatures (google.protobuf.Empty) returns (SdsFeatures);
+  rpc GetCurrentModels(google.protobuf.Empty) returns (ModelList);
+  rpc GetAvailableModels(google.protobuf.Empty) returns (ModelList);
+  rpc AddModel (maum.brain.sds.Model) returns (maum.brain.sds.ServerStatus);
+  rpc DeleteModel (maum.brain.sds.Model) returns (maum.brain.sds.ServerStatus);
+  rpc LoadModel (maum.brain.sds.Model) returns (OpenResult);
+  rpc CloseModel (maum.brain.sds.Model) returns (OpenResult);
+}
+syntax = "proto3";
+package maum.brain.sds;
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";
+import "maum/brain/sds/resolver.proto";
+///
+/// Internal 
+///
+//
+// External
+//

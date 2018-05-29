@@ -1,0 +1,40 @@
+// /home/test1/koch/proto/maum/brain/stt/stt.proto
+enum SetModelResult {
+  CL_SETMODEL_SUCCESS = 0;
+  CL_SETMODEL_FAILED = 1;
+  CL_SETMODEL_SUCCESS_RESTART = 2;
+  CL_SETMODEL_SUCCESS_NOTSTARTED = 3;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";
+import "maum/brain/stt/speech.proto";
+package maum.brain.stt;
+// MLF : master label files
+//
+// the following service should meta datas
+//
+// in.lang = (kor, eng)
+// in.samplerate = 16000, 8000, default 8000
+// in.model = default or weather baseline and so on
+// in.seconds = integer , real seconds of stream
+//
+// When calling the DetailRecongnize function, send bottom meta data
+// in.require.raw_mlf = raw mlf
+//
+// header
+// Query to query the STT server
+// List of STT models
+// Information about the categorizer server
+// Classifier Classifier Launcher Server
+//
+//
+// the following service should meta datas
+//
+// in.seconds = integer , real seconds of stream
+//
+// When calling the DetailRecongnize function, send bottom meta data
+// in.require.raw_mlf = raw mlf
+//
+// Stt Real Service

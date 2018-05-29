@@ -1,0 +1,32 @@
+// /home/test1/koch/proto/maum/m2u/console/classifier.proto
+message SimpleClassifier {
+  string name = 1;
+  maum.common.LangCode lang = 2;
+  string description = 3;
+  int32 skill_cnt = 4;
+  int32 reg_cnt = 5;
+  google.protobuf.Timestamp create_at = 6;
+  google.protobuf.Timestamp modify_at = 7;
+  repeated ListSkill skill_list = 8;
+  message ListSkill {
+    string name = 1;
+    repeated string regex = 2;
+  }
+  string running = 9;
+  repeated string mapped = 10;
+  // 정규 표현식에 pos tagging 사용 유무
+  bool pos_tagging = 11;
+  // 정규 표현식에 named entity 사용 유무
+  bool named_entity = 12;
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/router/v3/intentfinder.proto";
+package maum.m2u.console;
+// intentFinder Instance List
+// 의도 파악 정책 리스트
+// IntentFinder Policy 관련 요청
+// IntentFinder Instance 관련 요청

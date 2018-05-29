@@ -1,0 +1,10 @@
+// /home/test1/koch/proto/maum/m2u/da/provider.proto
+message TalkStat {
+  int64 session_key = 1;
+  string agent_key = 2;
+  map<string, string> meta = 3;
+};
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.da;

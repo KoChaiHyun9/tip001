@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/semanticSearch.proto
+service SemanticPassageSearchService {
+  rpc PassageSearchBM25(SemanticPassageSearchInput) returns (SemanticPassageSearchOutput);
+}
+syntax = "proto3";
+package maum.brain.qa;

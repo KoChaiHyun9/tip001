@@ -1,0 +1,26 @@
+// /home/test1/koch/proto/maum/m2u/console/da_instance.proto
+message DialogAgentInstance {
+  string dai_id = 1;
+  string chatbot_name = 2;
+  string sc_name = 3 [deprecated=true]; // DAI에서 sc정보는 의미가 없어서 더이상 사용하지 않습니다.
+  string da_name = 4;
+  repeated string skill_names = 5;
+  string name = 6;
+  maum.common.LangCode lang = 7;
+  string description = 8;
+  string version = 10;
+  string state = 11;
+  map<string, string> params = 12;
+  repeated DialogAgentInstanceExecutionInfo dai_exec_info = 13;
+  maum.m2u.facade.UserAttributeList user_attrs = 14;
+  maum.m2u.da.DialogAgentProviderSpec da_prod_spec = 100;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/facade/userattr.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/server/pool.proto";
+package maum.m2u.console;

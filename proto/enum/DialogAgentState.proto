@@ -1,0 +1,12 @@
+// /home/test1/koch/proto/maum/m2u/da/provider.proto
+enum DialogAgentState {
+  DIAG_STATE_UNUSED = 0;
+  DIAG_STATE_IDLE = 100;
+  DIAG_STATE_INITIALIZING = 101;
+  DIAG_STATE_RUNNING = 102;
+  DIAG_STATE_TERMINATED = 103;
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.da;

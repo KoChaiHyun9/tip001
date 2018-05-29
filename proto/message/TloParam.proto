@@ -1,0 +1,22 @@
+// /home/test1/koch/proto/maum/brain/mrc/mrc_tlo.proto
+message TloParam {
+  string seq_id = 1;
+  string log_type = 3;
+  string sid = 4;
+  string client_ip = 8;
+  string dev_info = 9;
+  string os_info = 10;
+  string nw_info = 11;
+  string svc_name = 12;
+  string dev_model = 13;
+  string carrier_type = 14;
+  string tr_id = 15;
+  string msg_id = 16;
+  string from_svc_name = 17;
+  string to_svc_name = 18;
+  string svc_type = 19;
+  string dev_type = 20;
+  string device_token = 21;
+}
+syntax = "proto3";
+package maum.brain.mrc;

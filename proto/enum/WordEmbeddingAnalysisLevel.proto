@@ -1,0 +1,10 @@
+// /home/test1/koch/proto/maum/brain/we/wordembedding.proto
+enum WordEmbeddingAnalysisLevel {
+  WORD_EMBEDDING_SINGLE_WORD = 0;
+  WORD_EMBEDDING_TWO_WORDS = 1;
+  WORD_EMBEDDING_MULTIPLE_WORDS = 2;
+  WORD_EMBEDDING_SENTENCE_WORDS = 3;
+  WORD_EMBEDDING_UNAVAILABLE = 99;
+}
+syntax = "proto3";
+package maum.brain.we;

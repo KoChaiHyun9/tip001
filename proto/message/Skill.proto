@@ -1,0 +1,39 @@
+// /home/test1/koch/proto/maum/m2u/facade/dialog.proto
+message Skill {
+  string name = 1;
+  string lang = 2;
+  string description = 3;
+  string version = 4;
+  string skill = 5;
+  map<string, string> properties = 6;
+  string key = 7;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "maum/m2u/facade/userattr.proto";
+import "google/protobuf/struct.proto";
+import "maum/m2u/common/mediatype.proto";
+package maum.m2u.facade;
+//
+// Chatbot Finder
+//
+// Get information on service groups
+// If you want to use authenticated mode,
+// you can provide meta data with
+// 'x-m2u-authentication-token' and
+// 'x-m2u-authentication-provider'
+///
+/// DIALOG SERVICE
+///
+/**
+ *
+ */
+// 과거 세션 조회 조건
+// 과거 세션
+// 과거 세션 리스트
+// 과거 대화 조건
+// 과거 대화
+// 과거 대화 리스트
+// Talk service with endpoint client

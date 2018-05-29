@@ -1,0 +1,11 @@
+// /home/test1/koch/proto/maum/m2u/facade/userattr.proto
+enum DataType {
+  DATA_TYPE_INT = 0;
+  DATA_TYPE_STRING = 1;
+  DATA_TYPE_BOOL = 2;
+  DATA_TYPE_INT_LIST = 3;
+  DATA_TYPE_STRING_LIST = 4;
+  DATA_TYPE_AUTH = 5;
+}
+syntax = "proto3";
+package maum.m2u.facade;

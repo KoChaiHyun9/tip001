@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/filter_answer_candidate.proto
+message FilterAnswerCandidateInputText {
+  string text = 1;
+}
+syntax = "proto3";
+package maum.brain.qa;

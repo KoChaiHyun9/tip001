@@ -1,0 +1,17 @@
+// /home/test1/koch/proto/maum/m2u/console/da_instance.proto
+message DialogAgentInstanceExecutionInfo {
+  string dai_id = 1;
+  string dam_name = 2;
+  bool active = 5;
+  int32 cnt = 6;
+  repeated string key = 7;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/facade/userattr.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/server/pool.proto";
+package maum.m2u.console;

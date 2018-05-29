@@ -1,0 +1,24 @@
+// /home/test1/koch/proto/maum/m2u/console/classifier.proto
+service IntentFinderPolicyAdmin {
+  // IntentFinderPolicy 모든 리스트 조회
+  rpc GetIntentFinderPolicyAllList (google.protobuf.Empty) returns (IntentFinderPolicyList);
+  // IntentFinderPolicy Info 요청
+  rpc GetIntentFinderPolicyInfo (Key) returns (maum.m2u.router.v3.IntentFinderPolicy);
+  // IntentFinderPolicy Insert 요청
+  rpc InsertIntentFinderPolicyInfo (maum.m2u.router.v3.IntentFinderPolicy) returns (maum.m2u.router.v3.IntentFinderPolicy);
+  // IntentFinderPolicy Update 요청
+  rpc UpdateIntentFinderPolicyInfo (maum.m2u.router.v3.IntentFinderPolicy) returns (maum.m2u.router.v3.IntentFinderPolicy);
+  // IntentFinderPolicy Delete 요청
+  rpc DeleteIntentFinderPolicies (KeyList) returns (ResultList);
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/router/v3/intentfinder.proto";
+package maum.m2u.console;
+// intentFinder Instance List
+// 의도 파악 정책 리스트
+// IntentFinder Policy 관련 요청
+// IntentFinder Instance 관련 요청

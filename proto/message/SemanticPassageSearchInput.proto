@@ -1,0 +1,8 @@
+// /home/test1/koch/proto/maum/brain/qa/semanticSearch.proto
+message SemanticPassageSearchInput {
+  float thresHold = 10;
+  int32 windowSize = 20;
+  string kbResult = 30;
+}
+syntax = "proto3";
+package maum.brain.qa;

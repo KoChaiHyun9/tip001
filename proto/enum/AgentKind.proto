@@ -1,0 +1,20 @@
+// /home/test1/koch/proto/maum/m2u/da/provider.proto
+enum AgentKind {
+  AGENT_UNKNOWN = 0;
+  // spoken dialog system
+  AGENT_SDS = 1;
+  // regular expression
+  AGENT_REGEX = 2;
+  // natural language processing
+  AGENT_NLP = 3;
+  // Sementic Search
+  AGENT_SEMENTIC_SEARCH = 4;
+  // chatbot
+  AGENT_CHATBOT = 200;
+  // human assisted system
+  AGENT_HUMAN = 1000;
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.da;

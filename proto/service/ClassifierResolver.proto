@@ -1,0 +1,31 @@
+// /home/test1/koch/proto/maum/brain/cl/classifier.proto
+service ClassifierResolver {
+  rpc Find (Model) returns (ServerStatus);
+  rpc GetModels (google.protobuf.Empty) returns (ModelList);
+  rpc GetServers (google.protobuf.Empty) returns (ServerStatusList);
+  rpc Stop (Model) returns (ServerStatus);
+  rpc Restart (Model) returns (ServerStatus);
+  rpc Ping (Model) returns (ServerStatus);
+  // in.filename = BASE64 encoded string
+  // in.lang = (kor, eng)
+  // in.model = default or weather baseline and so on
+  rpc SetModel (stream maum.common.FilePart) returns (SetModelResponse);
+  rpc DeleteModel (Model) returns (ServerStatus);
+  // get model categories
+  rpc GetModelCategories (Model) returns (ModelCategories);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";
+package maum.brain.cl;
+// Query for Classifier Resolver
+// Classifier Model List
+// Classifier Server State
+// Classifier Resolver Service
+// Classifier Input Text
+// Classified Item
+// Classified ITEM
+// Proxy Classifier
+// Real Classifier

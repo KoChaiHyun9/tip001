@@ -1,0 +1,20 @@
+// /home/test1/koch/proto/maum/m2u/console/chatbot.proto
+message AuthticationPolicy {
+  string name = 1;
+  string description = 2;
+  ProtocalType protocol = 3;
+  string server_ip = 4;
+  int32 server_port = 5;
+  string api_key = 6;
+  google.protobuf.Timestamp create_at = 7;
+  google.protobuf.Timestamp modify_at = 8;
+  string providerName = 9;
+  repeated string mapped = 10;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/common/mediatype.proto";
+import "maum/common/lang.proto";
+package maum.m2u.console;

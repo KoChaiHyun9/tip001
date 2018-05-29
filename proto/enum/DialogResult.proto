@@ -1,0 +1,50 @@
+// /home/test1/koch/proto/maum/m2u/facade/dialog.proto
+enum DialogResult {
+  OK = 0;
+  USER_INAVLIDATED = 101;
+  SERVICE_GROUP_NOT_FOUND = 102;
+  SESSION_NOT_FOUND = 103;
+  SESSION_INVALIDATED = 104;
+  EMPTY_IN = 201;
+  SKILL_CLASSIFIER_FAILED = 301;
+  DIALOG_AGENT_NOT_FOUND = 302;
+  DIALOG_AGENT_INVALIDATED = 303;
+  LAST_DIALG_AGENT_LOST = 304;
+  CHATBOT_NOT_FOUND = 305;
+  HUMAN_AGENT_NOT_FOUND = 306;
+  SECONDARY_DIALOG_CONFLICT = 311;
+  LAST_AGENT_NOT_FOUND = 312;
+  DUPLICATED_SKILL_RESOLVED = 313;
+  SECONDARY_DIALOG_AGENT_IS_MULTI_TURN = 314;
+  TRANSIT_CHATBOT = 401;
+  INTERNAL_ERROR = 500;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "maum/m2u/facade/userattr.proto";
+import "google/protobuf/struct.proto";
+import "maum/m2u/common/mediatype.proto";
+package maum.m2u.facade;
+//
+// Chatbot Finder
+//
+// Get information on service groups
+// If you want to use authenticated mode,
+// you can provide meta data with
+// 'x-m2u-authentication-token' and
+// 'x-m2u-authentication-provider'
+///
+/// DIALOG SERVICE
+///
+/**
+ *
+ */
+// 과거 세션 조회 조건
+// 과거 세션
+// 과거 세션 리스트
+// 과거 대화 조건
+// 과거 대화
+// 과거 대화 리스트
+// Talk service with endpoint client

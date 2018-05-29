@@ -1,0 +1,33 @@
+// /home/test1/koch/proto/maum/m2u/server/session.proto
+message Agent {
+  string name = 1;
+  maum.common.LangCode lang = 2;
+  int32 turn = 3;
+  string agent_key = 4;
+  string skill = 5;
+  string key = 6; // 멀티턴의 경우 키를 이용해서 기존의 DA를 재활용하도록 한다.
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "google/protobuf/empty.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/common/mediatype.proto";
+import "maum/m2u/facade/dialog.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/cl.proto";
+import "maum/m2u/facade/front.proto";
+/// ADMIN
+/// ADMIN
+// 한턴의 대화 전체 기록
+// agent 정보
+// 세션 정보
+// 세션 요약 정보
+// 상세 세션 정보
+// 세션 요약 정보 목록
+// 세션 응답 상태
+// Confidence Level을 구하는 작업과 관련된 작업들
+// 아래의 모든 작업은 auth.key meta를 항상 요구한다.
+// 신뢰레벨 파라미터

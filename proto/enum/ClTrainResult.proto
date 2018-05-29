@@ -1,0 +1,28 @@
+// /home/test1/koch/proto/maum/brain/cl/train/cltrainer.proto
+enum ClTrainResult {
+  training = 0;
+  success = 1;
+  failed = 2;
+  cancelled = 3;
+  preparing = 4;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+package maum.brain.cl.train;
+// sentence with words.\t morp/type morp/type morp/type
+// {
+//   categories : [ "cate1", "cate2", "cate3" ],
+//   text_lemmas : [
+//     { text: "origin text", lemma: "origin/xx text/xx" }
+//     { text: "origin text", lemma: "origin/xx text/xx" }
+//     { text: "origin text", lemma: "origin/xx text/xx" }
+//   ]
+// }
+// cate1 cate2 cate2
+//
+// DNN Classifier trainer service
+// INTERNAL USE ONLY
+// IF REMOTE is not 127.0.0.1, then reject it

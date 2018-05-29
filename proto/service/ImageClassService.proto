@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/m2u/server/imageclass.proto
+service ImageClassService {
+  rpc GetImageClasses(stream Image) returns (ImageClasses);
+}
+syntax = "proto3";
+package maum.m2u.server;

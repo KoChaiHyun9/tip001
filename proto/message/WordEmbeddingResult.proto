@@ -1,0 +1,8 @@
+// /home/test1/koch/proto/maum/brain/we/wordembedding.proto
+message WordEmbeddingResult {
+  string word = 1;
+  float similarity = 2;
+  string morp = 3;
+}
+syntax = "proto3";
+package maum.brain.we;

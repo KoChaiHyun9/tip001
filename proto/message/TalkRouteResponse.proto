@@ -1,0 +1,65 @@
+// /home/test1/koch/proto/maum/m2u/router/v3/router.proto
+message TalkRouteResponse {
+  oneof test_res {
+    // 대화 응답
+    TalkRouteSpeechResponse response = 1;
+    // 위임형 터리
+    TalkRouteDialogDelegate delegate = 3;
+  }
+}
+/**
+ * maum.ai M2U 플랫폼, 라우터 서비스의 구조
+ *
+ * M2U Router는 MAP에서 인터페이스된 결과물을 서버로 전송하고 이를 MAP으로 내려보내는 구조를
+ * 서비스를 가지고 있습니다.
+ *
+ * DialogRouter는 다음과 같은 역할을 수행해야 합니다.
+ *
+ * (1) 대화를 처리할 수 있는 세션 정보를 획득합니다.
+ * (2) 대화를 처리하는 chatbot을 지정합니다., 챗봇이 없을 경우에는 default chatbot
+ * (3) 챗봇에 대응하는 Intent Finder를 사용하여 (skill/intent)를 찾아옵니다.
+ * (4) Skill을 찾아와서 일치하는 Dialog Agent를 호출합니다.
+ * (5) 스킬의 전이에 따라서 필요한 경우 DialogAgent를 호출할 수 있습니다.
+ * (6) 응답을 받아서 MAP에게 최종 응답을 전달합니다.
+ *
+ * namespace: maum.m2u.common
+ */
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+import "maum/m2u/common/dialog.proto";
+import "maum/m2u/common/card.proto";
+import "maum/m2u/common/event.proto";
+import "maum/m2u/common/directive.proto";
+package maum.m2u.router.v3;
+// 대화를 처리하도록 Router에 요청을 넘깁니다.
+// 대화는 논리적으로 하나의 발화에 대해서 여러개의 응답이 가능한 구조를 갖추고 있습니다.
+// 2가지 경우에 그러합니다.
+// TRIGGER를 통해서 하나의 발화를 태우고 다른 발롸로 넘어간 경우에 하나 이상이 가능합니다.
+// OPEN의 경우에 여러 개의 응압이 가능할 수 있습니다.
+/**
+ * 새로운 챗봇을 생성할 때 요청이 됩니다.
+ */
+/**
+ * 대화를 넘겨서 응답을 받도록 하는 요청
+ */
+/**
+ * 대화 요청에 대한 응답
+ */
+/**
+ * TalkRoute를 통해서 대화 호출한 결과, 정상적인 응답
+ */
+/**
+ * TalkRoute를 경유하여 대화 호출한 결과 중, 단말 요청 사항
+ */
+/**
+ * EventRoute를 통해서 대화를 요청하는 경우
+ */
+/**
+ * CloseRoute를 통해서 명시적인 세션 종료 호출
+ */
+//
+// CloseRoute를 통해서 명시적인 세션 종료 호출
+/**
+ * 피드백 호출
+ */

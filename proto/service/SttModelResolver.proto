@@ -1,0 +1,48 @@
+// /home/test1/koch/proto/maum/brain/stt/stt.proto
+service SttModelResolver {
+  rpc Find (Model) returns (ServerStatus);
+  rpc GetModels (google.protobuf.Empty) returns (ModelList);
+  rpc GetServers (google.protobuf.Empty) returns (ServerStatusList);
+  rpc Stop (Model) returns (ServerStatus);
+  rpc Restart (Model) returns (ServerStatus);
+  rpc Ping (Model) returns (ServerStatus);
+  // in.filename = BASE64 encoded string
+  // in.lang = (kor, eng)
+  // in.model = default or weather baseline and so on
+  // in.samplerate = 16000, 8000, default 8000
+  rpc SetModel (stream maum.common.FilePart) returns (SetModelResponse);
+  rpc DeleteModel (Model) returns (ServerStatus);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";
+import "maum/brain/stt/speech.proto";
+package maum.brain.stt;
+// MLF : master label files
+//
+// the following service should meta datas
+//
+// in.lang = (kor, eng)
+// in.samplerate = 16000, 8000, default 8000
+// in.model = default or weather baseline and so on
+// in.seconds = integer , real seconds of stream
+//
+// When calling the DetailRecongnize function, send bottom meta data
+// in.require.raw_mlf = raw mlf
+//
+// header
+// Query to query the STT server
+// List of STT models
+// Information about the categorizer server
+// Classifier Classifier Launcher Server
+//
+//
+// the following service should meta datas
+//
+// in.seconds = integer , real seconds of stream
+//
+// When calling the DetailRecongnize function, send bottom meta data
+// in.require.raw_mlf = raw mlf
+//
+// Stt Real Service

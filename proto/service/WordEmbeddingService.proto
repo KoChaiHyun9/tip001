@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/we/wordembedding.proto
+service WordEmbeddingService {
+  rpc GetWordEmbedding (WordEmbeddingInputText) returns (WordEmbeddingDocument);
+}
+syntax = "proto3";
+package maum.brain.we;

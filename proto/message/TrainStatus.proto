@@ -1,0 +1,33 @@
+// /home/test1/koch/proto/maum/brain/stt/train/s3train.proto
+message TrainStatus {
+    string key = 1;
+    TrainStep step = 2;
+    string model = 3;
+    int32 sample_rate = 4;
+    maum.common.LangCode lang = 5;
+    TrainResult result = 6;
+    // PROGRESS BAR DISPLAY
+    int32 maximum = 11;
+    int32 value = 12;
+    int32 node_count = 21;
+    int32 run_count = 23;
+    int32 run_cur = 24;
+    int32 assigned_gpu_idx = 31;
+    string gpu_dev_name = 32;
+    int32 gpu_count = 33;
+    string gpu_model_name = 34;
+    google.protobuf.Timestamp started = 41;
+    google.protobuf.Duration elapsed = 42;
+    repeated string logs = 43;
+    string error = 101;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+package maum.brain.stt.train;
+//
+// DNN Classifier trainer service
+// INTERNAL USE ONLY
+// IF REMOTE is not 127.0.0.1, then reject it

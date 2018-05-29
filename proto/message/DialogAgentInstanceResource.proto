@@ -1,0 +1,38 @@
+// /home/test1/koch/proto/maum/m2u/server/pool.proto
+message DialogAgentInstanceResource {
+  // registred program information by admin
+  string name = 1;
+  string description = 2;
+  string version = 3;
+  maum.m2u.da.DialogAgentProviderSpec da_spec = 4;
+  string dam_name = 5;
+  // PoolAgent: IMDG(redis, hazelcast), finding or registrering
+  string chatbot = 11;
+  repeated string skills = 12;
+  maum.common.LangCode lang = 13;
+  string key = 14;
+  string dai_id = 15;
+  // server access info used by TalkImpl
+  string server_ip = 31;
+  int32 server_port = 32;
+  // RUN information by launcher
+  DialogAgentLaunchType launch_type = 41;
+  string launcher = 42;
+  int32 pid = 43;
+  google.protobuf.Timestamp started_at = 44;
+  maum.m2u.da.DialogAgentProviderParam param = 100;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/da/provider.proto";
+package maum.m2u.server;
+// ==================================================================
+// DIALOG AGENT POOL
+// ==================================================================
+// Pool service에서 MAP에 저장할 때 Key는 'DAIR UUID key' + "_" + skill로 한다.
+/**
+ * Registering service for DialogAgentInstanceResources
+ */

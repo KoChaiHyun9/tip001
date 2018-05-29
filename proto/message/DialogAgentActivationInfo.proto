@@ -1,0 +1,19 @@
+// /home/test1/koch/proto/maum/m2u/console/da.proto
+message DialogAgentActivationInfo {
+  string da_name = 1;
+  string dam_name = 2;
+  bool active = 3;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.console;
+/****************** GetDialogAgentManagerAllList ***************************/
+/****************** GetDialogAgentWithDomainList ***************************/
+/****************** GetDialogAgentManagerInfo ***************************/
+/****************** InsertDialogAgentManagerInfo ***************************/
+/****************** UpdateDialogAgentManagerInfo ***************************/
+/****************** DeleteDialogAgentManager ***************************/

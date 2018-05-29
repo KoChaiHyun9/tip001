@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/inference_answer.proto
+message InferenceAnswerInputText {
+  string text = 1;
+}
+syntax = "proto3";
+package maum.brain.qa;

@@ -1,0 +1,19 @@
+// /home/test1/koch/proto/maum/brain/stt/train/s3train.proto
+message SttModel {
+    string model = 1; /// model name should be alphanum
+    int32 sample_rate = 2;
+    maum.common.LangCode lang = 3;
+    repeated AudioFile files = 11;
+    // when done or cancelled callback url will be called
+    string callback_url = 100;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+package maum.brain.stt.train;
+//
+// DNN Classifier trainer service
+// INTERNAL USE ONLY
+// IF REMOTE is not 127.0.0.1, then reject it

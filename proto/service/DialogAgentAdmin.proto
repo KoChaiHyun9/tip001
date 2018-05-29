@@ -1,0 +1,38 @@
+// /home/test1/koch/proto/maum/m2u/console/da.proto
+service DialogAgentAdmin {
+  /*** DialogAgent LIST ***/
+  rpc GetDialogAgentAllList (google.protobuf.Empty) returns (DialogAgentList);
+  rpc GetDailogAgentListToDamFilter (Key) returns (DialogAgentList);
+  /*** DialogAgent VIEW ***/
+  rpc GetDialogAgentInfo (Key) returns (DialogAgentWithDialogAgentInstance);
+  /*** DialogAgent VIEW ***/
+  rpc GetDialogAgentActivationInfoList (Key) returns (DialogAgentManagerList);
+  /*** DialogAgent ADD ***/
+  rpc InsertDialogAgentInfo (DialogAgentInfo) returns (DialogAgentInfo);
+  /*** DialogAgent EDIT ***/
+  rpc UpdateDialogAgentInfo (DialogAgentInfo) returns (DialogAgentInfo);
+  /*** DialogAgent DELETE ***/
+  rpc DeleteDialogAgent (KeyList) returns (ResultList);
+  /*** Get Runtime Parameters ***/
+  rpc GetRuntimeParameters (maum.m2u.server.DialogAgentName) returns (maum.m2u.da.RuntimeParameterList);
+  /*** Get User Attributes ***/
+  rpc GetUserAttributes (maum.m2u.server.DialogAgentName) returns (maum.m2u.common.UserAttributeList);
+  /*** Get Executable DA list ***/
+  rpc GetExecutableDA (google.protobuf.Empty) returns (DialogAgentExecutableList);
+  rpc StopDialogAgent (KeyList) returns (ResultList);
+  rpc StartDialogAgent (KeyList) returns (ResultList);
+  rpc RestartDialogAgent (KeyList) returns (ResultList);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.console;
+/****************** GetDialogAgentManagerAllList ***************************/
+/****************** GetDialogAgentWithDomainList ***************************/
+/****************** GetDialogAgentManagerInfo ***************************/
+/****************** InsertDialogAgentManagerInfo ***************************/
+/****************** UpdateDialogAgentManagerInfo ***************************/
+/****************** DeleteDialogAgentManager ***************************/

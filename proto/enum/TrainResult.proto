@@ -1,0 +1,17 @@
+// /home/test1/koch/proto/maum/brain/stt/train/s3train.proto
+enum TrainResult {
+    training = 0;
+    success = 1;
+    failed = 2;
+    cancelled = 3;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+package maum.brain.stt.train;
+//
+// DNN Classifier trainer service
+// INTERNAL USE ONLY
+// IF REMOTE is not 127.0.0.1, then reject it

@@ -1,0 +1,22 @@
+// /home/test1/koch/proto/maum/m2u/sds/sds.proto
+message ServiceLocation {
+  string server_address = 1;
+}
+syntax = "proto3";
+package maum.m2u.sds;
+//
+// Spoken Dialog System API
+//
+// SDS name resolving query
+// Spoken Dialog Service Resolver
+//
+// It runs child server automatically.
+// Every query should has session_key.
+// this key is created by DialogService
+// first dialog request
+// response about first dialog request
+// secondary slots
+// slots to be filled
+// secondary response message
+// Spoken Dialog Service
+// Real conversation

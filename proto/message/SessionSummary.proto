@@ -1,0 +1,33 @@
+// /home/test1/koch/proto/maum/m2u/server/session.proto
+message SessionSummary {
+  int64 session_id = 1;
+  maum.m2u.facade.Session session = 2;
+  int32 talks_count = 3;
+  int32 warned_talk_count = 4;
+  ConfidenceLevel cl = 5;
+  float last_cl_result = 6;
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "google/protobuf/empty.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/common/mediatype.proto";
+import "maum/m2u/facade/dialog.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/cl.proto";
+import "maum/m2u/facade/front.proto";
+/// ADMIN
+/// ADMIN
+// 한턴의 대화 전체 기록
+// agent 정보
+// 세션 정보
+// 세션 요약 정보
+// 상세 세션 정보
+// 세션 요약 정보 목록
+// 세션 응답 상태
+// Confidence Level을 구하는 작업과 관련된 작업들
+// 아래의 모든 작업은 auth.key meta를 항상 요구한다.
+// 신뢰레벨 파라미터

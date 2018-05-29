@@ -1,0 +1,19 @@
+// /home/test1/koch/proto/maum/m2u/console/classifier.proto
+service IntentFinderAdmin {
+  rpc GetIntentFinderAllList (google.protobuf.Empty) returns (IntentFinderList);
+  rpc GetIntentFinderInfo (Key) returns (IntentFinder);
+  rpc InsertIntentFinderInfo (IntentFinder) returns (IntentFinder);
+  rpc UpdateIntentFinderInfo (IntentFinder) returns (IntentFinder);
+  rpc DeleteIntentFinder (KeyList) returns (ResultList);
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/router/v3/intentfinder.proto";
+package maum.m2u.console;
+// intentFinder Instance List
+// 의도 파악 정책 리스트
+// IntentFinder Policy 관련 요청
+// IntentFinder Instance 관련 요청

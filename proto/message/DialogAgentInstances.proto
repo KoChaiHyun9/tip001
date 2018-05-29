@@ -1,0 +1,13 @@
+// /home/test1/koch/proto/maum/m2u/server/dam.proto
+message DialogAgentInstances {
+  repeated string keys = 1;
+  string chatbot = 2;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/m2u/common/userattr.proto";
+import "maum/m2u/da/provider.proto";
+package maum.m2u.server;
+//
+// Dialog Agent Manager API
+//

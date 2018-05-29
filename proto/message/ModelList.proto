@@ -1,0 +1,9 @@
+// /home/test1/koch/proto/maum/brain/sds/resolver.proto
+message ModelList {
+  repeated Model models = 1;
+}
+syntax = "proto3";
+package maum.brain.sds;
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";

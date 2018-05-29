@@ -1,0 +1,13 @@
+// /home/test1/koch/proto/maum/brain/sds/resolver.proto
+enum ServerState {
+  SERVER_STATE_NONE = 0;         // not running
+  SERVER_STATE_STARTING = 1;     // parent process
+  SERVER_STATE_INITIALIZING = 2; // sub process
+  SERVER_STATE_RUNNING = 3;      // sub process
+  SERVER_STATE_UPDATING = 4;	 // sub process
+}
+syntax = "proto3";
+package maum.brain.sds;
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";

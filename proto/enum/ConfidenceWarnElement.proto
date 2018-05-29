@@ -1,0 +1,8 @@
+// /home/test1/koch/proto/maum/m2u/server/cl.proto
+enum ConfidenceWarnElement {
+  CWE_GREEN = 0;
+  CWE_YELLOW = 1;
+  CWE_RED = 3;
+}
+syntax = "proto3";
+package maum.m2u.server;

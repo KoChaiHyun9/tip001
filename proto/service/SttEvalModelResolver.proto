@@ -1,0 +1,7 @@
+// /home/test1/koch/proto/maum/brain/stt/train/eval.proto
+service SttEvalModelResolver {
+    rpc RequestEvaluation (EvalRequest) returns (EvalResult) {
+    }
+}
+syntax = "proto3";
+package maum.brain.stt.train;

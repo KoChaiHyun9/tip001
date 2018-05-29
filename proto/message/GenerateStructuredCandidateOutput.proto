@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/generate_structured_candidate.proto
+message GenerateStructuredCandidateOutput {
+  string generateStructuredCandidateResult = 10; 
+}
+syntax = "proto3";
+package maum.brain.qa;

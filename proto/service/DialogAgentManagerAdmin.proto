@@ -1,0 +1,31 @@
+// /home/test1/koch/proto/maum/m2u/console/da.proto
+service DialogAgentManagerAdmin {
+  /*** DialogAgentManager LIST ***/
+  rpc GetDialogAgentManagerAllList (google.protobuf.Empty) returns (DialogAgentManagerList);
+  /*** DialogAgentManager VIEW ***/
+  rpc GetDialogAgentManagerInfo (Key) returns (DialogAgentManager);
+  /*** DialogAgentManager VIEW ***/
+  rpc GetDialogAgentWithDialogAgentInstanceList (Key) returns (DialogAgentWithDialogAgentInstanceList);
+  /*** DialogAgentManager ADD ***/
+  rpc InsertDialogAgentManagerInfo (DialogAgentManager) returns (DialogAgentManager);
+  /*** DialogAgentManager EDIT ***/
+  rpc UpdateDialogAgentManagerInfo (DialogAgentManager) returns (DialogAgentManager);
+  /*** DialogAgentManager DELETE ***/
+  rpc DeleteDialogAgentManager (KeyList) returns (ResultList);
+  rpc StopDialogAgentManager (KeyList) returns (ResultList);
+  rpc StartDialogAgentManager (KeyList) returns (ResultList);
+  rpc RestartDialogAgentManager (KeyList) returns (ResultList);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.console;
+/****************** GetDialogAgentManagerAllList ***************************/
+/****************** GetDialogAgentWithDomainList ***************************/
+/****************** GetDialogAgentManagerInfo ***************************/
+/****************** InsertDialogAgentManagerInfo ***************************/
+/****************** UpdateDialogAgentManagerInfo ***************************/
+/****************** DeleteDialogAgentManager ***************************/

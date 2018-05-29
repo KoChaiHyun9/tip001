@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/mrc/mrc.proto
+service MRC {
+  rpc SendQuestion(MrcInput) returns (MrcOutputs) {}
+}
+syntax = "proto3";
+package maum.brain.mrc;

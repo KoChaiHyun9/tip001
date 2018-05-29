@@ -1,0 +1,16 @@
+// /home/test1/koch/proto/maum/brain/sds/resolver.proto
+message ServerStatus{
+  string group_name = 1;
+  maum.common.LangCode lang = 2;
+  bool is_external = 3;
+  bool is_education = 4;
+  bool running = 5;
+  ServerState state = 6;
+  string server_address = 7;
+  string invoked_by = 8;
+}
+syntax = "proto3";
+package maum.brain.sds;
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";

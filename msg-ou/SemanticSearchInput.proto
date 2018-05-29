@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/semanticSearch.proto
+message SemanticSearchInput {
+  string questionAnalysis = 10;
+}
+syntax = "proto3";
+package maum.brain.qa;

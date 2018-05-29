@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/inference_answer_hypothesis.proto
+message InferenceAnswerHypothesisResultDocument {
+  string result = 1;
+}
+syntax = "proto3";
+package maum.brain.qa;

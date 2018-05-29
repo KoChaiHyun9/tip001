@@ -1,0 +1,7 @@
+// /home/test1/koch/proto/maum/m2u/trigger/trigger.proto
+service TriggerService {
+  rpc TriggerDialog (TriggerRequest) returns (google.protobuf.Empty);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package maum.m2u.trigger;

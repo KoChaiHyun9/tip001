@@ -1,0 +1,19 @@
+// /home/test1/koch/proto/maum/m2u/server/simpleclassifier.proto
+service SimpleClassifier {
+  // Get simple classifier result
+  rpc GetDFASkill (Text) returns (SkillClass);
+  // Get simple classifier info
+  rpc GetSimpleClassifierInfo (SimpleClassifierInfo) returns (SimpleClassifierStat);
+  // Update simple classifier
+  rpc UpdateSimpleClassifier (SimpleClassifierInfo) returns (SimpleClassifierStat);
+  // delete simple classifier
+  rpc DeleteSimpleClassifier (SimpleClassifierInfo) returns (SimpleClassifierStat);
+  // Make simple classifier
+  rpc MakeSimpleClassifier (SimpleClassifierResource) returns (SimpleClassifierStat);
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "maum/common/lang.proto";
+// ==================================================================
+// SIMPLE CLASSIFIER
+// ==================================================================

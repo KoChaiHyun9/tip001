@@ -1,0 +1,25 @@
+// /home/test1/koch/proto/maum/m2u/console/da_instance.proto
+service DialogAgentInstanceAdmin {
+  rpc GetDialogAgentInstanceAllList (google.protobuf.Empty) returns (DialogAgentInstanceList);
+  rpc GetDialogAgentInstanceByChatbotName (Key) returns (DialogAgentInstanceList);
+  rpc GetDialogAgentInstanceListToDamFilter (Key) returns (DialogAgentInstanceList);
+  rpc GetDialogAgentInstanceInfo (Key) returns (DialogAgentInstance);
+  rpc GetDialogAgentInstanceResourceList (Key) returns (DialogAgentInstanceResourceList);
+  rpc GetDialogAgentInstanceResourceToDamFilter (Key) returns (DialogAgentInstanceResourceList);
+  rpc GetDialogAgentInstanceParamList (Key) returns (RunDialogAgentInstanceParamList);
+  rpc InsertDialogAgentInstanceInfo (DialogAgentInstance) returns (DialogAgentInstance);
+  rpc UpdateDialogAgentInstanceInfo (DialogAgentInstance) returns (DialogAgentInstance);
+  rpc DeleteDialogAgentInstance (KeyList) returns (ResultList);
+  rpc StopDialogAgentInstance (KeyList) returns (ResultList);
+  rpc StartDialogAgentInstance (KeyList) returns (ResultList);
+  rpc RestartDialogAgentInstance (KeyList) returns (ResultList);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/facade/userattr.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/server/pool.proto";
+package maum.m2u.console;

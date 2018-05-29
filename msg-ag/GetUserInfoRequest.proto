@@ -1,0 +1,85 @@
+// /home/test1/koch/proto/maum/m2u/map/authentication.proto
+message GetUserInfoRequest {
+  string access_token = 1;
+}
+/**
+ * maum.ai M2U MAP protocol 인증을 위한 데이터
+ *
+ * 인증 서비스 제공자는 크게 4가지 서비스를 제공해야 합니다.
+ * 1. 로그인
+ * 2. 로그아웃
+ * 3. IS VALID
+ * 4. GET USER INFO
+ *
+ * 인증과정에서 발급되는 토큰은 auth token입니다. auth의 의미는 authenticatiuon의
+ * 결과부여 받은 authorzation 을 위한 토큰이기도 합니다.
+ *
+ * 인증 토큰이 정상적인 경우에는 AccessToken을 별도로 발급 받습니다. 이 토큰을 기반으로
+ * 사용자 정보를 획득할 수 있습니다.
+ *
+ * namespace: maum.m2u.map
+ */
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "maum/m2u/common/user.proto";
+import "maum/m2u/common/device.proto";
+package maum.m2u.map;
+// 사용자 속성 조회를 위한 키
+// 사용자 속성 정의 데이터
+/**
+ * 사용자를 확인하는 서비스
+ *
+ */
+/**
+ * 인증 파라미터
+ *
+ * - SignIn의 경우
+ * - MultiFactorVerify의 경우에도 동시에 사용한다.
+ */
+/**
+ * 인증 페이로드
+ */
+/**
+ * 인증 결과 PAYLOAD
+ *
+ * (1) 성공정인 인증 처리
+ * (2) 인증 실패
+ * (3) 멀티팩터 인증에 대한 처리
+ */
+/**
+ * 인증 성공 데이터
+ *
+ * 인증 성공 시점에 단말에 전달되는 데이터
+ * 단말은 인증 토콘을 저장해야 한다.
+ */
+/**
+ * 인증 실패 페이로드
+ * 인증 싶패의 이유를 명시적으로 적시해준다.
+ */
+/**
+ * MULTI FACTOR 인증을 위한 추가적인 인증 밥업과
+ * 인증 방식을 정의합니다.
+ */
+/**
+ * 서버에서 보내온 다중 팩터 요청에 대한 상세 데이터
+ * 클라이언트에서 서버로 다시 보내주는 정보입니다.
+ */
+/**
+ * 사인아웃 처리를 위한 페이로드
+ */
+/**
+ * 응답 메시지
+ */
+/**
+ * 인증 토큰이 유효할 때
+ */
+/**
+ * 인증 토큰이 정상적인지 확인하는 과정을 거칩니다.
+ */
+/**
+ * 사용자 정보를 요청하는 요청
+ */
+/**
+ * 사용자 정보를 반환합니다.
+ */

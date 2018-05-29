@@ -1,0 +1,159 @@
+// /home/test1/koch/proto/maum/m2u/map/map.proto
+message MapDirective {
+  // onfof in map directive
+  oneof test_directive {
+    // 디렉티브 하나 또는 새로운 디렉티브 스트림의 시작
+    DirectiveStream directive = 1;
+    // 프레임의 끝
+    StreamEnd stream_end = 2;
+    // 프레임의 중지
+    StreamBreak stream_break = 3;
+    // 바이트 배열 형식의 스트림
+    bytes bytes = 11;
+    // 텍스트 형식의 스트림
+    string text = 12;
+    // 객체 형식의 스트림
+    StreamMeta meta = 21;
+    // 이벤트 호출에 대한 예외
+    MapException exception = 99;
+  }
+}
+/**
+ * maum.ai M2U MAP protocol
+ *
+ * <para>
+ * 이 파일은 maum.ai M2U 플랫폼에서 제공하는 인공지능 기반 대화 서비스를 사용하려는
+ * 외부 디바이스 및 시스템이 연동하는 통신 규약을 비동기 방식으로 정의하고 있습니다.
+ * </para>
+ * 기본적인 개념은 아마존 Alexa Voice Server에서 힌트를 얻었지만, grpc를 활용하면서
+ * 얻을 수 있는 장점을 최대한 활용하여 구조 설계를 하였습니다.
+ *
+ * 모든 통신은 `EventStream`이라는 URL을 통해서 처리되게 됩니다.
+ * 주기적인 `Ping`을 통해서 `EventStream`이 필요한지를 확인할 수 있도록
+ * 처리하고 있습니다.
+ *<para>
+ * 1. 각 이벤트나 디렉티브는 하나 이상의 protobuf 메시지로 구성됩니다.
+ * 스트림 형태로 전달되는 메시지들은 반복적인 스트림을 지속적으로 수신합니다.
+ * </para>
+ *
+ * 2. 각 이벤트나 디렉티브의 중간에는 다른 디렉티브가 끼어들 수 있습니다.
+ * 그러나 동시에 2개 이상의 스트림이 전송되지는 않습니다. 이는 HTTP2에서는
+ * 가능한 규격이지만 grpc에서 사용하는 방식으로는 한계가 있습니다.
+ *
+ * 3. EventStream에 헤더 데이터를 통해서 인증 데이터를 처리할 수 있습니다.
+ *
+ * 4. 모든 이벤트와 디렉티브는 각기 `interface/operation` 구조를 가지고 상대방을
+ * 호출합니다. 각 인터페이스와 오퍼레이션은 각기 필요한 추가적인 데이터를 가질 수 있습니다.
+ * 이는 JSON으로 인코딩 될 수 있는 어떤 데이터도 모두 다 수용할 수 있습니다.
+ *
+ * 5. 이벤트와 디렉티브의 타입 중에는 예외가 기본으로 포함되어 있습니다.
+ * 상대방에 요청했던 호출에 대한 처리 실패를 처리할 수 있는 기준입니다.
+ *
+ * 이 프로토콜을 규격을 수용하는 클라이언트는 grpc 1.6 이상을 사용해서 처리하는 것을
+ * 권장합니다. 양방향 비동기 통신을 하므로 어떤 형태의 메시지가 올리 예상할 수 없으므로
+ * 상태관리에 주의해야 하며 grpc에서 제공하는 풍부한 API를 활용해야 합니다.
+ *
+ * namespace: maum.m2u.map
+ */
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+import "maum/brain/stt/speech.proto";
+import "maum/brain/tts/speech.proto";
+import "maum/brain/ir/ir.proto";
+import "maum/m2u/common/device.proto";
+import "maum/m2u/common/location.proto";
+import "maum/m2u/common/event.proto";
+package maum.m2u.map;
+// TODO
+// package maum.m2u.facade
+// M2U 서비스를 호출하여 사용한다.
+//
+// 주기적으로 PING을 호출해서 해당 디바이스에 전송할 이벤트가 있는지 확인한다.
+// META
+// - m2u-auth-token: base64 encoded authentication token
+// - m2u-auth-provider: authtication provider
+//
+// PING
+//
+/**
+ * 주기적인 Ping 요청
+ */
+/**
+ * PONG 응답
+ */
+/**
+ * M2U 서버에 대한 구분
+ */
+/**
+ * 디렉티브 상태
+ */
+//
+// EVENTS
+//
+/**
+ * 클라이언트에서 서버로 전송되는 이벤트 구조
+ */
+/**
+ * 이벤트 형식의 FRAME
+ * 단일 이벤트이거나 연속된 스트림 이벤트의 시작일 수 있다.
+ */
+//
+// DIRECTIVES
+//
+/**
+ * 서버에서 클라이언트로 전송되는 지시자 구조
+ */
+/**
+ * 디렉티브 형식의 프레임
+ * 단일한 디렉티브 이거나 연속된 스트림 디렉티브의 시작일 수 있다.
+ */
+//
+// EXCEPTION
+//
+/**
+ * 예외는 Event나 Directive에 대응하여 호출시 문제가 생기면 이를 내보내도록 한다.
+ */
+//
+// FRAME
+//
+/**
+ * `StreamMeta`을 통해서
+ * Event나 Directive에 추가적인 스트림 데이터를 전송할 수 있다.
+ * 기본적인 스트림 데이터 형식인 문자열이나 바이트 배열 이외에 다른 메시지를
+ * 포함하려고 할 때 사용할 수 있다.
+ */
+/**
+ * 스트림 형식의 Event나 Directive의 끝을 표시해준다.
+ */
+/**
+ *
+ */
+// ###############################################
+//
+// ASYNC INTERFACE 들을 위한 공통 규격
+//
+/** 호출되는 대상에 대한 정의
+ * 호출되는 대상은 interface와 operation으로 정의된다.
+ * operation은 단순히 메소드가 아니라 이벤트 메시지이기도 하고
+ * 각 상대방이 처리해야할 메시지이기도 하다.
+ *
+ * 예를 들어, interface는 VideoPlayer 이고 operation 은 stop 이다.
+ */
+/**
+ * 비동기인터페이스의 목록
+ */
+//
+// STREAM PARAMETERS
+//
+/**
+ * Video 관련 AsyncInterface를 호출할 때 사용될 수 있는 파라미터.
+ */
+/**
+ * 제스터 파라미터
+ */
+/**
+ * 키보드 파라미터
+ */

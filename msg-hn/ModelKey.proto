@@ -1,0 +1,16 @@
+// /home/test1/koch/proto/maum/brain/hmd/hmd.proto
+message ModelKey {
+  maum.common.LangCode lang = 1;
+  string model = 2;
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "maum/brain/nlp/nlp.proto";
+import "google/protobuf/empty.proto";
+package maum.brain.hmd;
+// 분류기를 조회하기 위한 질의
+// 분류기 목록
+///
+// 분류를 위한 입력 정보
+// 분류 아이템
+/// HMD 분류 결과

@@ -1,0 +1,47 @@
+// /home/test1/koch/proto/maum/supervisor/monitor.proto
+service SupervisorMonitor {
+  // supervisor가 떴다는 것을 알려준다.
+  rpc InformStartUp (SupervisorServerGroup) returns (Result) {}
+  // 동작하는 모든 supervisor 서비스 서버 그룹 목록을 구한다.
+  rpc GetSupervisorServerGroupList(google.protobuf.Empty) returns (SupervisorServerGroupList) {}
+  // 그룹키로 서비스 목록만 구할 수 있다.
+  rpc GetSupervisorServerGroup(SupervisorServerGroupKey) returns (SupervisorServerGroup) {}
+  // 프로세스 키로 프로세스를 가져온다.
+  rpc GetSupervisorProcess(SupervisorProcessKey) returns (SupervisorProcess) {}
+  // 프로세스 키로 서비스를 시작한다.
+  rpc StartSupervisorProcess(SupervisorProcessKey) returns (Result) {}
+  // 프로세스 키로 서비스를 중지한다.
+  rpc StopSupervisorProcess(SupervisorProcessKey) returns (Result) {}
+  // 프로세스 키로 서비스 로그를 볼 수 있다.
+  rpc GetTailProcessStdoutLog(SupervisorProcessKey) returns (StdTailLog) {}
+}
+/**
+ * supervisor monitor 서비스
+ */
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package maum.supervisor;
+/**
+ * 수퍼바이저 모니터
+ */
+/**
+ * 결과값 처리
+ */
+/**
+ * 수퍼바이저 서버 그룹 목록
+ */
+/**
+ * 서버 그룹
+ */
+/**
+ * 수퍼바이저 프로세스
+ */
+/**
+ * 수퍼바이저 서버 그룹 키
+ */
+/**
+ * 수퍼바이저 프로세스 키
+ */
+/**
+ * 로그
+ */

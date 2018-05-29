@@ -1,0 +1,11 @@
+// /home/test1/koch/proto/maum/m2u/trigger/trigger.proto
+message TriggerRequest {
+  //  maum.m2u.facade.Session session = 1;
+  string device_id = 2;
+  string utter = 3;
+  string tagged_utter = 4;
+  bool is_continuous = 5;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package maum.m2u.trigger;

@@ -1,0 +1,7 @@
+// /home/test1/koch/proto/maum/m2u/server/cl.proto
+message ConfidenceLevel {
+  double average = 1;
+  map<int32, float> elem_values = 2;
+};
+syntax = "proto3";
+package maum.m2u.server;

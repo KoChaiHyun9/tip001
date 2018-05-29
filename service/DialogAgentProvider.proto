@@ -1,0 +1,144 @@
+// /home/test1/koch/proto/maum/m2u/da/v3/talk.proto
+service DialogAgentProvider {
+  // LIFE CYCLE MANAGEMENT
+  /**
+   * Web console을 통해 DA를 Dialog Agent Instance 의 형태로 실행할 때,
+   * 관련 설정값을 이용하여 Instnace를 초기화하도록 실행되도록 하는 함수
+   * 입력된 사항에 대해 Talk() 함수에서 사용할 수 있도록
+   * InitParameter의 정보를 변수에 저장하는 과정 수행
+   */
+  rpc Init (InitParameter) returns (DialogAgentProviderParam);
+  /**
+   * 현재 Dialog Agent Instance 의 상태를 확인할 수 있는 함수
+   * Dialog Agent Instance 동작에 따라 상태 변경 필요
+   *
+   * 생성자에서 DIAG_STATE_IDLE 상태로 초기화 해줘야 합니다. (준비 상태)
+   * Init() 함수에서 DIAG_STATE_INITIALIZING로 상태를 변경해주고 (초기화중)
+   * Init() 이 성공적으로 되면 DIAG_STATE_RUNNING 상태로 변경해줘야 합니다. (동작중)
+   * Talk()는 DIAG_STATE_RUNNING인 경우만 할 수 있습니다.
+   * Terminate() 에서는 상태를 DIAG_STATE_TERMINATED로 변경해줘야 합니다.
+   */
+  rpc IsReady (google.protobuf.Empty) returns (DialogAgentStatus);
+  /**
+   * 동작중인 DA Instance을 종료시키는 함수
+   */
+  rpc Terminate (google.protobuf.Empty) returns (google.protobuf.Empty);
+  // APPLICATION MANAGEMENT
+  /**
+   * 실제로 DA Instnace가 돌아가기 위해 필요한 paramerters를 정의
+   */
+  rpc GetRuntimeParameters (google.protobuf.Empty) returns (RuntimeParameterList);
+  /**
+   * User가 사용자 확장 속성을 정의하고자 할 때 사용됨.
+   * DA의 생성자에서 정의된 DA의 User Attribute List를 반환
+   * FIXME: 이 함수는 더 이상 호출할 필요가 없습니다.
+   */
+  rpc GetUserAttributes (google.protobuf.Empty) returns (google.protobuf.Empty);
+  // CHATBOT SERVICE MANAGEMENT
+  /**
+   * DA가 동작하는 데 필요한 여라가지 옵션 값을 처리하는 DA Provider Parameter를 반환
+   */
+  rpc GetProviderParameter (google.protobuf.Empty) returns (DialogAgentProviderParam);
+  // TALK API
+  // 세션이 새로이 시작했을 때에 메시지를 전달 받고, 응답을 줄 수 있습니다.
+  // 이 호출은 세션 전체를 시작할 때 들어오는 요청이고 모든 DA가 이 요청을 받지는 않습니다.
+  //
+  // header: x-operation-sync-id : 모든 이벤트 호출에 대한 헤더로 사용되도록 함.
+  rpc OpenSession (OpenSessionRequest) returns (TalkResponse);
+  // 해당하는 스킬을 최초로 호출 할 때 호출된다.
+  // 싱글턴 일 경우에는 호출되지 않는다.
+  // 대화를 시작하기 전에 초기화해야 하는 작업이 있을 경우에 호출한다.
+  // header: x-operation-sync-id : 모든 이벤트 호출에 대한 헤더로 사용되도록 함.
+  rpc OpenSkill (OpenSkillRequest) returns (OpenSkillResponse);
+  // 대화를 주고 응답을 생성하도록 한다.
+  // header: x-operation-sync-id : 모든 이벤트 호출에 대한 헤더로 사용되도록 함.
+  rpc Talk (TalkRequest) returns (TalkResponse);
+  // DA에서 내려보낸 디렉티브에 대한 실행 결과를 받아와서 처리할 수 있도록 한다.
+  // 다음과 같은 동작이 예가 될 수 있다.
+  // 로봇이 특정한 위치로 이동하라고 명명하고 수행이 완료되었을 경우에 내보낸다.
+  // header: x-operation-sync-id : 모든 이벤트 호출에 대한 헤더로 사용되도록 함.
+  rpc Event (EventRequest) returns (TalkResponse);
+  // 현재 SKILL이 종료되었음을 알려준다.
+  // SKILL이 정상적으로 스스로 종료할 경우에는 호출하지 않으므로
+  // 매우 주의해야 한다.
+  // header: x-operation-sync-id : 모든 이벤트 호출에 대한 헤더로 사용되도록 함.
+  rpc CloseSkill (CloseSkillRequest) returns (CloseSkillResponse);
+}
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/common/dialog.proto";
+import "maum/m2u/common/card.proto";
+import "maum/m2u/common/event.proto";
+import "maum/m2u/common/directive.proto";
+import "maum/m2u/router/v3/intentfinder.proto";
+import "maum/brain/nlp/nlp.proto";
+import "maum/m2u/da/provider.proto";
+package maum.m2u.da.v3;
+/**
+ * 대화를 수행하는 Diaog Agent 서비스
+ *
+ * 이중에서 대화를 수행하는 API는 다음과 같습니다.
+ * Open: 새로운 대화를 새로이 시작합니다.
+ */
+/**
+ * 새로운 대화 세션이 열럴 때, 이에 대한 응답을 할 수 있는 서비스를 지정합니다.
+ * 이 경우에는 INTENT FINDER를 타지는 않고 바로 들어오게 됩니다.
+ * SKILL은 CHATBOT의 설정에서 세션 OPEN 시점에 호출해야할 SKILL을 지정하도록 하고 있고
+ * 이를 통해서 지정된 스킬 들이 호출되도록 되어 잇습니다.
+ * 이 스킬은 하나 이상이 될 수 있습니다.
+ */
+/**
+ * 이 스킬이 시작되었음을 알려줍니다.
+ * 새로운 세션으로 스킬이 시작될 때, 해당 세션에 관련된 초기화 작업을 수행할 수 있습니다.
+ * Router는 해당 세션에서 스킬을 새로이 시작할 때 OPEN을 호출해서 정보를 알려줘야 합니다.
+ */
+/**
+ * 새로운 대화를 시작할 때, 해당 스킬에 대한 초기화 작업을 수행할 수 있습니다.
+ *
+ * 새로운 세션을 호출할 때 초기화할 일이 있으면 필요한 작업을 수행할 기회를 제공합니다.
+ * 응답에서는 session에 대한 업데이트를 제공할 수 있습니다.
+ */
+/**
+ * 라우터로부터 받는 대화 요청
+ *
+ * 대화 요청에는 대화, 시스템 컨텍스트, 세션 정보가 포함되어 있습니다.
+ */
+/**
+ * 대화에 대한 응답은 크게 세 가지 이다.
+ * 1. SpeechReponse: 정상적인 대화의 응답
+ * 2. SkillTransition: SKILL에 대한 요청을 처리할 수 없어서 다른 SKILL로 전이하는 경우
+ * 3. DialogDelegate: DEVICE의 추가적인 응답을 요청하고 이를 재처리하는 경우
+ */
+/**
+ * 정상적인 대화 응답
+ */
+/**
+ * 새로운 스킬로 전이한다.
+ *
+ * 라우터는 SkillTransition이 반복적으로 처리되는 것을 막야야 한다.
+ * 하나의 대화에서 SkillTranstion이 한번 이상 발생해서는 안된다.
+ */
+/**
+ * 사용자의 디바이스에서 처리해야할 추가적인 이벤트를 전송하고 이를 처리하도록 한다.
+ * 이 경우에는 발화가 나가지 않고 클라이언트의 응답에 따라서 대화의 내용이 달라지게 된다.
+ *
+ * 다음 대화 시나리오에서 처리되도록 한다.
+ * "아빠에게 전화 걸어줘" --> 단말에 "아빠" 전화번호를 전달하도록 한다.
+ * "내 적금에 얼마 들어 있어" --> 단말에 "인증을 수행하여" 사용자 정보를 포함하여 전송하도록 한다.
+ *
+ * map은 포함된 Directive를 그대로 단말에 전송하게 되며, 단말이 바로 응답을 해야 한다.
+ * 응답할 때에는 Dialog.Event를 통해서 전송하게 되며, 이 Event 데이터는 의도분류가 없이
+ * 바로 해당 SKILL에 전달되어야 한다.
+ *
+ * 대화 위임이 발생한 경우, 챗봇 및 SKILL, INTENT, 세션 정보를 전달해준다.
+ *
+ */
+/**
+ * 이벤트 요청
+ */
+/**
+ * 닫기 시점에 처리해야할 요청
+ */
+// 딛힌 스킬에 대한 응답 처리

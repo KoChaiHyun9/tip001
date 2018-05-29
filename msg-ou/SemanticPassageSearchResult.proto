@@ -1,0 +1,11 @@
+// /home/test1/koch/proto/maum/brain/qa/semanticSearch.proto
+message SemanticPassageSearchResult {
+  string passageText = 10;
+  repeated string passageMorp = 20;
+  float weight = 30;
+  string docType = 40;
+  int32 rank = 50;
+  int64 createDate = 60;
+}
+syntax = "proto3";
+package maum.brain.qa;

@@ -1,0 +1,12 @@
+// /home/test1/koch/proto/maum/m2u/server/simpleclassifier.proto
+enum SimpleClassifierResult {
+  SC_UNKNOWN = 0;
+  SC_SUCESS = 1;
+  SC_FAIL = 2;
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "maum/common/lang.proto";
+// ==================================================================
+// SIMPLE CLASSIFIER
+// ==================================================================

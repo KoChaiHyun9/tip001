@@ -1,0 +1,17 @@
+// /home/test1/koch/proto/maum/brain/qa/brain_qa.proto
+message Provider {
+  string name = 1;
+  string vendor = 2;
+  string version = 3;
+  string description = 4;
+  string support_encoding = 5;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/brain/qa/question_analysis.proto";
+import "maum/brain/qa/generate_unstructured_candidate.proto";
+import "maum/brain/qa/inference_answer_constraint.proto";
+import "maum/brain/qa/filter_answer_candidate.proto";
+import "maum/brain/qa/inference_answer_hypothesis.proto";
+import "maum/brain/qa/inference_answer.proto";
+package maum.brain.qa;

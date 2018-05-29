@@ -1,0 +1,29 @@
+// /home/test1/koch/proto/maum/m2u/server/pool.proto
+service DialogAgentInstancePool {
+  /**
+   * Pool Service가 기동을 마치고 서비스 상태인지 확인한다.
+   *
+   * Hazelcast와 Pool Service는 m2u 동작에 필수 서비스 이므로
+   * 주요 서비스 기동 전에 Pool Service가 준비되었는지 확인한 후 진행하기 위해 호출한다.
+   */
+  rpc IsReady (google.protobuf.Empty) returns (PoolState);
+  rpc RegisterChatbot (ChatbotParam) returns (ChatbotResponse);
+  rpc UnregisterChatbot (ChatbotParam) returns (ChatbotResponse);
+  rpc Register (DialogAgentInstanceResource) returns (RegisterResponse);
+  rpc Unregister (DialogAgentInstanceKey) returns (DialogAgentInstanceStat);
+  rpc GetStatistics (DialogAgentInstanceKey) returns (DialogAgentInstanceStat);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/da/provider.proto";
+package maum.m2u.server;
+// ==================================================================
+// DIALOG AGENT POOL
+// ==================================================================
+// Pool service에서 MAP에 저장할 때 Key는 'DAIR UUID key' + "_" + skill로 한다.
+/**
+ * Registering service for DialogAgentInstanceResources
+ */

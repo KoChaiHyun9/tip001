@@ -1,0 +1,18 @@
+// /home/test1/koch/proto/maum/m2u/server/pool.proto
+message DialogAgentInstanceKey {
+  string key = 1;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/da/provider.proto";
+package maum.m2u.server;
+// ==================================================================
+// DIALOG AGENT POOL
+// ==================================================================
+// Pool service에서 MAP에 저장할 때 Key는 'DAIR UUID key' + "_" + skill로 한다.
+/**
+ * Registering service for DialogAgentInstanceResources
+ */

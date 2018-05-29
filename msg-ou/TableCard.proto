@@ -1,0 +1,67 @@
+// /home/test1/koch/proto/maum/m2u/common/card.proto
+message TableCard {
+  // 표 type에는 데이터 형식에 대한 정보를 제공한다
+  // - 시장금리 추이
+  // - 기준금리 추이
+  // - 대출금리 추이
+  // 예를 들어 type이 '시장금리 추이' 라면 해당 표는 금리추세를 표현한 표임을 알 수 있다.
+  string type = 1;
+  // 표 출력을 위한 실제 데이터는 배열로 제공된다.
+  // columns는 열이 어떻게 구성되어야 할 지에 대한 구조를 제공한다.
+  google.protobuf.ListValue columns = 10;
+  // rows은 행을 의미하며 여러개의 ListValue를 가질수 있다.
+  repeated google.protobuf.ListValue rows = 11;
+}
+/**
+ * maum.ai M2U 플랫폼, 대화 진행에 관련된 카드 데이터 타입들 정의
+ *
+ * 카드는 dialog agent에서 단말로 내리는 데이터 형식입니다.
+ *
+ * map에서는 RenderCard 호출을 통해서 데이터를 단말로 내립니다.
+ *
+ * namespace: maum.m2u.common
+ */
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+// import "google/protobuf/timestamp.proto";
+// import "maum/common/lang.proto";
+package maum.m2u.common;
+// ----------------------------------------------------------------------
+// 카드 형태의 데이터
+// ----------------------------------------------------------------------
+// 카드 형태의 데이터를 나타나도록 지시한다.
+// CHART
+//    type: 그래프 종류..
+//    options : 출력형태
+//    data: [] , 내부적으로 대시 배열 2차 3차 , object 로 동작한다
+// SELECT CARD
+//  title, 요약 사진 , selected utter,
+// NEWS LIST
+//  title, 요약, 사진 .. 링크 ...
+/**
+ * 차트 형태의 데이터
+ * google charts 형식을 지원할 수 있도록 정의한다.
+ */
+/**
+ * 선택형 카드
+ *
+ * 값을 선택할 수 있는 선택형 카드가 필요하다.
+ */
+/**
+ * 링크 형태의 카드
+ */
+/**
+ * 리스트 형태의 카드들
+ */
+/**
+ * 사용자 지정 카드
+ */
+/**
+ * 사용자 지정 카드 목록
+ */
+/**
+ * 표 형태의 데이터
+ */
+/**
+ * 메시지 카드
+ */

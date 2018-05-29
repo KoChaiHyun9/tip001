@@ -1,0 +1,13 @@
+// /home/test1/koch/proto/maum/m2u/console/da_instance.proto
+message DialogAgentInstanceResourceList {
+  repeated maum.m2u.server.DialogAgentInstanceResource dair_list =1;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/facade/userattr.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/server/pool.proto";
+package maum.m2u.console;

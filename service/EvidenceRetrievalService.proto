@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/evidence_retrieval.proto
+service EvidenceRetrievalService {
+  rpc EvidenceRetrieval(EvidenceInput) returns (EvidenceOutput);
+}
+syntax = "proto3";
+package maum.brain.qa;

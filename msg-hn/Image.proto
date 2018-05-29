@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/m2u/server/imageclass.proto
+message Image {
+  bytes body = 1;
+}
+syntax = "proto3";
+package maum.m2u.server;

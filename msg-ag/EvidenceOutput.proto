@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/evidence_retrieval.proto
+message EvidenceOutput {
+  string evidenceResult = 10; 
+}
+syntax = "proto3";
+package maum.brain.qa;

@@ -1,0 +1,60 @@
+// /home/test1/koch/proto/maum/supervisor/monitor.proto
+message SupervisorProcess {
+  // 이름
+  string name = 1;
+  // 그룹
+  string group = 2;
+  // 설명
+  string description = 3;
+  // 시작시간
+  int32 start = 4;
+  // 멈춘 시간?
+  int32 stop = 5;
+  // 현재 시간
+  int32 now = 6;
+  // 상태
+  // TODO 가능하면 enum으로 변경
+  int32 state = 7;
+  // 실행에러
+  string spawnerr = 8;
+  // 종료 상태
+  int32 exitstatus = 9;
+  // 로그파일 이름
+  string logfile = 10;
+  // stdout 로그파일
+  string stdout_logfile = 11;
+  // stderr 로그파일
+  string stderr_logfile = 12;
+  // 프로세스 ID
+  int32 pid = 13;
+}
+/**
+ * supervisor monitor 서비스
+ */
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package maum.supervisor;
+/**
+ * 수퍼바이저 모니터
+ */
+/**
+ * 결과값 처리
+ */
+/**
+ * 수퍼바이저 서버 그룹 목록
+ */
+/**
+ * 서버 그룹
+ */
+/**
+ * 수퍼바이저 프로세스
+ */
+/**
+ * 수퍼바이저 서버 그룹 키
+ */
+/**
+ * 수퍼바이저 프로세스 키
+ */
+/**
+ * 로그
+ */

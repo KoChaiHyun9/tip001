@@ -1,0 +1,13 @@
+// /home/test1/koch/proto/maum/brain/mrc/train/mrc_trainer.proto
+message MrcTrainStatusList {
+  repeated MrcTrainStatus mrc_trains = 1;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "maum/common/lang.proto";
+package maum.brain.mrc.train;
+// MRC trainer service
+// INTERNAL USE ONLY
+// IF REMOTE is not 127.0.0.1, then reject it

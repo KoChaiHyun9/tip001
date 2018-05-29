@@ -1,0 +1,52 @@
+// /home/test1/koch/proto/maum/m2u/common/directive.proto
+message VideoPlayPayload {
+  // video id
+  string id = 1;
+  // video title
+  string title = 2;
+  // video 위치 url
+  string url = 11;
+  // video 재생 시간
+  google.protobuf.Duration play_time = 12;
+}
+/**
+ * maum.ai M2U 플랫폼, 대화 진행에 관련된 디렉티브 타입 데이터 정의
+ *
+ * 여기에 정의된 디렉티브들은 dilaog agent에서 router를 경유하여 map으로 전송한다.
+ * map에서는 이들 directive을 각각 정의된 interface/operation으로 전달해야 한다.
+ *
+ * namespace: maum.m2u.common
+ */
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+import "google/protobuf/duration.proto";
+import "maum/m2u/common/event.proto";
+package maum.m2u.common;
+// ----------------------------------------------------------------------
+// 디렉티브
+// ----------------------------------------------------------------------
+/**
+ * DA에서 단말로 내려보내는 디렉티브의 구조
+ */
+// DA에서 단말로 내려보내주는 PAYLOAD
+// 아바타 출력을 위한 페이로드
+// 오디오 출력을 위한 페이로드
+// 사용자에게 오디오 스트림또는 오디오 파일을 스피커로 출력하도록 지시한다.
+// Clova 오디오 출력을 위한 페이로드
+/**
+ * 오디오 출력의 중지
+ */
+/**
+ * 비디오 출력을 위한 페이로드
+ */
+// 단말에 대화 처리에 대한 일부 데이터 위임을 하는 경우에 대한 처리
+// 모든 처리를 SKIP하기 위해서 최대한 상세한 정보를 넘겨주도록 한다.
+/**
+ * 대화 위임을 위한 Directive 데이터
+ */
+/**
+ * 인증 처리를 위한 페이로드
+ */
+/**
+ * 단말 정보 획득 위한 페이로드
+ */

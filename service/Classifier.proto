@@ -1,0 +1,21 @@
+// /home/test1/koch/proto/maum/brain/cl/classifier.proto
+service Classifier {
+  rpc Ping(Model) returns (ServerStatus);
+  rpc GetClass (ClassInputText) returns (ClassifiedSummary);
+  rpc GetClassMultiple (stream ClassInputText) returns (stream ClassifiedSummary);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";
+package maum.brain.cl;
+// Query for Classifier Resolver
+// Classifier Model List
+// Classifier Server State
+// Classifier Resolver Service
+// Classifier Input Text
+// Classified Item
+// Classified ITEM
+// Proxy Classifier
+// Real Classifier

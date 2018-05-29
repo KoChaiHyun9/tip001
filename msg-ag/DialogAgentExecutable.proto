@@ -1,0 +1,24 @@
+// /home/test1/koch/proto/maum/m2u/console/da.proto
+message DialogAgentExecutable {
+  string name = 1;
+  string version = 2;
+  string type = 3;
+  string da_spec = 4;
+  string full_command = 5;
+  maum.m2u.server.RuntimeEnvironment runtime_env = 6;
+  bool require_user_privacy = 7;
+  repeated string distributions = 8;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.console;
+/****************** GetDialogAgentManagerAllList ***************************/
+/****************** GetDialogAgentWithDomainList ***************************/
+/****************** GetDialogAgentManagerInfo ***************************/
+/****************** InsertDialogAgentManagerInfo ***************************/
+/****************** UpdateDialogAgentManagerInfo ***************************/
+/****************** DeleteDialogAgentManager ***************************/

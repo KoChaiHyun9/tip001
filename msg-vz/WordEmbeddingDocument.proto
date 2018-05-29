@@ -1,0 +1,7 @@
+// /home/test1/koch/proto/maum/brain/we/wordembedding.proto
+message WordEmbeddingDocument {
+  repeated WordEmbeddingResult wes = 1;
+  WordEmbeddingAnalysisLevel analysis_level = 2;
+}
+syntax = "proto3";
+package maum.brain.we;

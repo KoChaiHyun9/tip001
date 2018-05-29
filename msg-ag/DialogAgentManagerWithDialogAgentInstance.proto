@@ -1,0 +1,21 @@
+// /home/test1/koch/proto/maum/m2u/console/da.proto
+message DialogAgentManagerWithDialogAgentInstance {
+  DialogAgentManager dam_info = 1;
+  int32 da_cnt = 2;
+  int32 dai_cnt = 3;
+  string duration = 4;
+  int32 pid = 5;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/dam.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.console;
+/****************** GetDialogAgentManagerAllList ***************************/
+/****************** GetDialogAgentWithDomainList ***************************/
+/****************** GetDialogAgentManagerInfo ***************************/
+/****************** InsertDialogAgentManagerInfo ***************************/
+/****************** UpdateDialogAgentManagerInfo ***************************/
+/****************** DeleteDialogAgentManager ***************************/

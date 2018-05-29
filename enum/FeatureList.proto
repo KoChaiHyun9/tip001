@@ -1,0 +1,19 @@
+// /home/test1/koch/proto/maum/brain/sds/sds.proto
+enum FeatureList {
+  SDS_EXTERNAL = 0;
+  SDS_INTERNAL = 1;
+  SDS_CONFIDENCE_SVM_SCORE = 2;
+  SDS_CONFIDENCE_INDRI_SCORE = 3;
+}
+syntax = "proto3";
+package maum.brain.sds;
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";
+import "maum/brain/sds/resolver.proto";
+///
+/// Internal 
+///
+//
+// External
+//

@@ -1,0 +1,88 @@
+// /home/test1/koch/proto/maum/brain/mrc/train/mrc_trainer.proto
+message TrainParam{
+  int32 epoches = 1;  // default=70
+  int32 batch_size = 2;  // default=32;
+  bool resume = 3;
+  int32 max_len = 4;  // default=15 or 50
+  int32 seed = 5; //default=411, help='random seed for data shuffling, dropout, etc.'
+  message OptParam{
+    enum Optimizer{
+      EMTRY_FIELD1 = 0;
+      ADAMAX = 1;   // default=ADAMAX
+      SGD = 2;
+    }
+    Optimizer optimizer = 1;
+    float weight_decay = 2;  // default=0
+    float learning_rate = 3;  // only applied to SGD. (default=0.1)
+    float momentum = 4;  // only applied to SGD. (default=0)
+  }
+  OptParam opt_param = 6;
+  float grad_clipping = 7;  // default=10
+  message ModelParam{
+    enum ModelType{   // default=DRQA
+      EMTRY_FIELD2 = 0;
+      S2_NET = 1;
+      DRQA = 2;
+      BIDAF = 3;
+      R_NET = 4;
+      S2BN_NET = 5;
+    }
+    ModelType model_type = 1;
+    message RnnParam{
+      enum RnnType{   // default: SRU
+        EMTRY_FIELD3 = 0;
+        SRU = 1;
+        RNN = 2;
+        GRU = 3;
+        LSTM = 4;
+      }
+      RnnType rnn_type = 1;
+      bool rnn_padding = 2;  // perform rnn padding (much slower but more accurate)
+      int32 doc_layers = 3;  // default=5
+      int32 question_layers = 4;  // default=5
+      int32 modeling_layers = 5;  // after BIDAF, Match LSTM, or RNN (for BIDAF, R-Net, DrQA+SM): (default=2)
+      int32 modeling2_layers = 6;  //after Self-Matching Attention (for R-Net): (default=2)
+      int32 hidden_size = 7;  // node: default=100
+      bool concat_rnn_layers = 8;  // for DrQA (BIDAF and R-Net ignore this option)
+      bool sum_rnn_layers = 9;
+      float dropout_rnn = 10;  // default=0.2
+      bool dropout_rnn_output = 11;
+    }
+    RnnParam rnn_param = 2;
+    message EmbParam{
+      string emb_file = 10;   // default='../rsc/glove.840B.300d.squad.txt'
+      int32 tune_partial = 11;  // finetune top-x embeddings. (default=1000)
+      bool fix_embeddings = 12;  // if true, `tune_partial` will be ignored.
+      float dropout_emb = 36;  // default=0.2
+    }
+    EmbParam emb_param = 3;
+    message FeatureParam{
+      bool use_char = 21;
+      repeated int32 filter_sizes = 22;  // for char CNN (default='3,4,5')
+      int32 num_filters = 23;  // for char CNN (default=30)
+      int32 char_embed_dim = 24;  // default=50
+      int32 char_embed_dim2 = 25;  // default=50
+      bool exact_match = 26;
+      bool exact_match2 = 27;
+      bool use_qemb = 30;
+      bool use_qemb2 = 32;
+    }
+    FeatureParam feature_param = 4;
+    enum QuestionMerge{  // self_attn or avg (default='self_attn')
+      EMTRY_FIELD4 = 0;
+      SELF_ATTEN = 1;
+      AVG = 2;
+    }
+    QuestionMerge question_merge = 5;
+  }
+  ModelParam model_param = 8;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "maum/common/lang.proto";
+package maum.brain.mrc.train;
+// MRC trainer service
+// INTERNAL USE ONLY
+// IF REMOTE is not 127.0.0.1, then reject it

@@ -1,0 +1,10 @@
+// /home/test1/koch/proto/maum/brain/stt/train/eval.proto
+message EvalResult {
+    int32 hit_count = 1;
+    int32 delete_count = 2;
+    int32 switch_count = 3;
+    int32 insert_count = 4;
+    int32 total_count = 5;
+}
+syntax = "proto3";
+package maum.brain.stt.train;

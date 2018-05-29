@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/semanticSearch.proto
+message SemanticSearchOutput {
+  string semanticSearchResult = 10;
+}
+syntax = "proto3";
+package maum.brain.qa;

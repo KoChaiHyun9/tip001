@@ -1,0 +1,42 @@
+// /home/test1/koch/proto/maum/m2u/console/classifier.proto
+message IntentFinder {
+  string name = 1;
+  string description = 3;
+  string ip = 4;
+  int32 port = 5;
+  bool active_custom_script = 10;
+  int32 custom_script_position = 11;
+  repeated Classifiers classifiers = 20;
+  repeated string mapped = 21;
+  string dialog_act_model = 22;
+  maum.common.LangCode dialog_act_model_lang = 23;
+  string sentiment_model = 24;
+  maum.common.LangCode sentiment_model_lang = 25;
+  bool use_space = 26;
+  NlpLevel nlp_level = 27;
+  bool use_pcre = 28;
+  // nlp level
+  enum NlpLevel {
+    NLP_LEVEL_NOT_USE = 0;
+    NLP_LEVEL_POS_TAGGING = 1;
+    NLP_LEVEL_NAMED_ENTITY = 2;
+    NLP_LEVEL_ANSWER_TYPE = 3;
+  }
+  message Classifiers {
+    maum.common.LangCode lang = 1;
+    ClassifierType type = 2;
+    string name = 3;
+    repeated string skills = 4;
+  }
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "maum/m2u/console/da.proto";
+import "maum/m2u/router/v3/intentfinder.proto";
+package maum.m2u.console;
+// intentFinder Instance List
+// 의도 파악 정책 리스트
+// IntentFinder Policy 관련 요청
+// IntentFinder Instance 관련 요청

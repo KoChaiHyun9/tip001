@@ -1,0 +1,119 @@
+// /home/test1/koch/proto/maum/rpc/status.proto
+enum ExCode {
+  SUCCESS = 0;
+  /*
+   * 300, CLIENT ORIGIN ERROR
+   */
+  // 인증실패 및 권한 획득 실패
+  AUTHORIZATION_FAILED = 301;
+  // 사용자 입력 데이터 오류
+  INVALID_ARGUMENT = 302;
+  /*
+   * SERVER PROCESSING ERROR
+   */
+  // 리소스 없음
+  NOT_FOUND = 400;
+  FILE_NOT_FOUND = 401;
+  DB_KEY_NOT_FOUND = 402;
+  MEM_KEY_NOT_FOUND = 403;
+  MQ_NOT_FOUND = 404;
+  ALREADY_EXISTS = 410;
+  FILE_ALREADY_EXISTS = 411;
+  DB_KEY_ALREADY_EXISTS = 412;
+  MEM_KEY_ALREADY_EXISTS = 413;
+  MQ_ALREADY_EXISTS = 414;
+  FAILED_PRECONDITION = 420;
+  LOGICAL_ERROR = 421;
+  CONDITION_ERROR = 422;
+  ASSERTION_ERROR = 423;
+  RUNTIME_ERROR = 424;
+  RESOURCE_EXHAUSTED = 430;
+  DISK_RESOURCE_EXHAUSTED = 431;
+  OUT_OF_MEMORY = 432;
+  TOO_MANY_REQUEST = 433;
+  QUOTA_EXCEEDED = 434;
+  OUT_OF_RANGE = 440;
+  INDEX_OUT_OF_RANGE = 441;
+  DATA_LOSS = 450;
+  SYSTEM_CRASHED = 451;
+  OS_ERROR = 452;
+  PERMISSION_DENIED = 453;
+  NETWORK_SYSTEM_ERROR = 454;
+  DB_CRASHED = 455;
+  MQ_CRASHED = 456;
+  ABORTED = 500;
+  REMOTE_CALL_GRPC_ERROR = 501;
+  REMOTE_CALL_REST_ERROR = 502;
+  REMOTE_CALL_HTTP_ERROR = 503;
+  REMOTE_CALL_MQ_ERROR = 504;
+  REMOTE_CALL_TCP_ERROR = 505;
+  REMOTE_CALL_UDP_ERROR = 506;
+  REMOTE_CALL_ETC_ERROR = 507;
+}
+/*
+ * maum.ai 표준 응답코드 체계
+ *
+ *
+ */
+syntax = "proto3";
+package maum.rpc;
+import "google/protobuf/any.proto";
+/**
+ * 마인즈랩 제품
+ * {module}{proc}{hyphen}{code}{error_index}
+ * 2 + 2 + 1 + 3 + 5 : 13자리
+ */
+/**
+ * M2u 프로세스 목록
+ */
+/**
+ * Biz 프로세스 목록
+ */
+/**
+ * Mlt 프로세스 목록
+ */
+/**
+ * Api 프로세스 목록
+ */
+/**
+ * Stt 프로세스 목록
+ */
+/**
+ * stt train 프로세스 목록
+ */
+/**
+ * ta 프로세스 목록
+ */
+/**
+ * ta train 프로세스 목록
+ */
+/**
+ * sds 프로세스 목록
+ */
+/**
+ * sds train 프로세스 목록
+ */
+/**
+ * mrc 프로세스 목록
+ */
+/**
+ * mrc train 프로세스 목록
+ */
+/**
+ * bqa 프로세스 목록
+ */
+/**
+ * eev 프로세스 목록
+ */
+/**
+ *  ExCode 종류
+ */
+/**
+ * ResultStatus 결과
+ */
+/**
+ * grpc Status의 `error_details` 변수에 바이너리 형태로 마샬링되어서 전송되는
+ * 객체. 실지로는 `grpc-status-details-bin` trailing meta 값으로 전달된다.
+ *
+ * 네트워크 호출 스택 구조를 반영하여 하위 호출의 에러를 그대로 담을 수 있다.
+ */

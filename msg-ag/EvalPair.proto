@@ -1,0 +1,7 @@
+// /home/test1/koch/proto/maum/brain/stt/train/eval.proto
+message EvalPair {
+    string solve_contents = 1;
+    string answer_contents = 2;
+}
+syntax = "proto3";
+package maum.brain.stt.train;

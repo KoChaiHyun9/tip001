@@ -1,0 +1,21 @@
+// /home/test1/koch/proto/maum/brain/sds/resolver.proto
+service SdsServiceResolver {
+  rpc Find (ModelGroup) returns (ServerStatus);
+  rpc Stop (ModelGroup) returns (ServerStatus);
+  rpc Restart (ModelGroup) returns (ServerStatus);
+  rpc Ping (ModelGroup) returns (ServerStatus);
+  rpc GetAllModels (google.protobuf.Empty) returns (ModelList);
+  rpc GetModelGroups (google.protobuf.Empty) returns (ModelGroupList);
+  rpc CreateModelGroup (ModelGroup) returns (google.protobuf.Empty);
+  rpc DeleteModelGroup (ModelGroup) returns (google.protobuf.Empty);
+  rpc UpdateModel (stream maum.common.FilePart) returns (google.protobuf.Empty);
+  rpc DeleteModel (Model) returns (google.protobuf.Empty);
+  rpc LinkModel (ModelParam) returns (google.protobuf.Empty);
+  rpc UnlinkModel (ModelParam) returns (google.protobuf.Empty);
+  rpc GetServers (google.protobuf.Empty) returns (ServerStatusList);
+}
+syntax = "proto3";
+package maum.brain.sds;
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";

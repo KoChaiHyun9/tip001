@@ -1,0 +1,19 @@
+// /home/test1/koch/proto/maum/brain/qa/brain_qa.proto
+service QuestionAnswerService {
+  rpc GetProvider (google.protobuf.Empty) returns (Provider);
+  rpc QuestionAnalyze (QuestionAnalysisInputText) returns (QuestionAnalysisResultDocument);
+  rpc GenerateUnstructuredCandidate(UnstructuredCandidateInputText) returns (UnstructuredCandidateResultDocument); 
+  rpc InferenceAnswerConstraint(InferenceAnswerConstraintInputText) returns (InferenceAnswerConstraintResultDocument);
+  rpc FilterAnswerCandidate(FilterAnswerCandidateInputText) returns (FilterAnswerCandidateResultDocument);
+  rpc InferenceAnswerHypothesis(InferenceAnswerHypothesisInputText) returns (InferenceAnswerHypothesisResultDocument);
+  rpc InferenceAnswer(InferenceAnswerInputText) returns (InferenceAnswerResultDocument);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/brain/qa/question_analysis.proto";
+import "maum/brain/qa/generate_unstructured_candidate.proto";
+import "maum/brain/qa/inference_answer_constraint.proto";
+import "maum/brain/qa/filter_answer_candidate.proto";
+import "maum/brain/qa/inference_answer_hypothesis.proto";
+import "maum/brain/qa/inference_answer.proto";
+package maum.brain.qa;

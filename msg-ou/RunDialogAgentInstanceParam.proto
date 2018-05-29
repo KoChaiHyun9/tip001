@@ -1,0 +1,18 @@
+// /home/test1/koch/proto/maum/m2u/server/dam.proto
+message RunDialogAgentInstanceParam {
+  string key = 1;
+  string dai_id = 2;
+  string agent = 3;
+  string version = 4;
+  string description = 5;
+  maum.m2u.da.InitParameter param = 100;
+  maum.m2u.da.DialogAgentProviderSpec da_prod_spec = 101;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/m2u/common/userattr.proto";
+import "maum/m2u/da/provider.proto";
+package maum.m2u.server;
+//
+// Dialog Agent Manager API
+//

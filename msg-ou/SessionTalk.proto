@@ -1,0 +1,80 @@
+// /home/test1/koch/proto/maum/m2u/server/session.proto
+message SessionTalk {
+  // 순서
+  uint32 seq = 1;
+  // DialogSession.id
+  int32 session_id = 2;
+  // 언어
+  maum.common.LangCode lang = 11;
+  // 음성 여부
+  bool audio = 12;
+  // Sample Rate
+  int32 sample_rate = 13;
+  // 이미지 여부
+  bool image = 14;
+  // 입력 텍스트
+  string in = 21;
+  string in_mangled = 22;
+  // 출력 텍스트
+  string out = 23;
+  // 출력 음성
+  string audio_record_file = 24;
+  // 출력 메타 데이터
+  map<string, string> meta = 31;
+  // 출력 메타 데이터
+  map<string, string> context = 32;
+  // grpc 최종 status
+  int32 status_code = 41;
+  // 내부 처리 코드
+  maum.m2u.facade.DialogResult dialog_result = 42;
+  // 텍스트 분석, 이건 정말 들어갈 것은 아닌 것 같군요. 제거
+  // NamedEntityAnalysis named_entity_analysis = 50;
+  // 복수의 대화 에이전트 정보
+  repeated TalkAgent agents = 61;
+  // 최종 도메인
+  string skill = 62;
+  // 최종 의도
+  string intent = 63;
+  // 시작 시간
+  google.protobuf.Timestamp start = 71;
+  // 끝 시간
+  google.protobuf.Timestamp end = 72;
+  // 각 구간별 시간
+  map<string, google.protobuf.Duration> elapsed_time = 73;
+  // 각 세부 동작별 CL
+  ConfidenceLevel cl = 81;
+  float cl_result = 82;
+  // CL 안정구간이 아닌 경우 표시
+  int32 warned = 83;
+  // 사용자 피드백
+  int32 feedback = 91;
+  // 대화 정확도
+  int32 accuracy = 92;
+  // 다른 챗봇으로 전달을 위한 챗봇 이름
+  string transit_chatbot = 101;
+  string transit_from = 102;
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "google/protobuf/empty.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "maum/common/lang.proto";
+import "maum/m2u/common/mediatype.proto";
+import "maum/m2u/facade/dialog.proto";
+import "maum/m2u/da/provider.proto";
+import "maum/m2u/server/cl.proto";
+import "maum/m2u/facade/front.proto";
+/// ADMIN
+/// ADMIN
+// 한턴의 대화 전체 기록
+// agent 정보
+// 세션 정보
+// 세션 요약 정보
+// 상세 세션 정보
+// 세션 요약 정보 목록
+// 세션 응답 상태
+// Confidence Level을 구하는 작업과 관련된 작업들
+// 아래의 모든 작업은 auth.key meta를 항상 요구한다.
+// 신뢰레벨 파라미터

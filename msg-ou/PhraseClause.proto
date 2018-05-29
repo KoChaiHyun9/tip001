@@ -1,0 +1,118 @@
+// /home/test1/koch/proto/maum/brain/nlp/nlp.proto
+message PhraseClause {
+  int32 seq = 1;
+  string label = 2;
+  string text = 3;
+  int32 begin = 4;
+  int32 end = 5;
+  int32 key_begin = 6;
+  int32 head_phrase = 7;
+  repeated int32 sub_phrases = 8;
+  double weight = 9;
+  repeated PhraseElement elements = 10;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+package maum.brain.nlp;
+// According to Level, NLP Analysis
+// NLP_ANALYSIS_ALL : MORPHEME, NAMED_ENTITY, CHUNK
+// NLP_ANALYSIS_WORD(Level 1) : SPACE, WORD, MORPHEME, MORPHEME_EVAL(only nlp kor #3)
+// NLP_ANALYSIS_NAMED_ENTITY(Level 2) : Level 1 + NAMED_ENTITY
+// NLP_ANALYSIS_CHUNK(Level 3) : Level 2 + CHUNK
+// NLP_ANALYSIS_WORD_SENSE_DISAMBIGUATION(Level 4) : Level3 + WORD_SENSE_DISAMBIGUATION
+// NLP_ANALYSIS_DEPENDENCY_PARSER(Level 5) : Level 4 + DEPENDENCY_PARSER
+// NLP_ANALYSIS_SEMANTIC_ROLE_LABELING(Level 6) : Level 5 + SEMANTIC_ROLE_LABELING
+// NLP_ANALYSIS_ZERO_ANAPHORA(Level 7) : Level 6 + ZERO_ANAPHORA
+// According to Level, Extract Keyword Frequency
+///
+// Input Text
+//
+// ==================================================================
+// Language Analysis
+// ==================================================================
+/**
+ * 어절 정보
+ * seq : 어절의 id
+ * text : 어절
+ * begin : 어절을 구성하는 첫형태소 id
+ * end : 어절을 구성하는 끝 형대소 id
+ */
+/**
+ * 형태소 정보
+ * seq : 형태소 id
+ * lemma : 형태소 단어
+ * type : 형태소 태그
+ * posion : 문장에서 byte position
+ * weight : 0 ~ 1 사이의 형태소 분석 결과의 신뢰도
+ */
+// kor nlp #3
+/**
+ * 개체명 정보
+ * seq : 개체명 id ( 출현 순서대로 부여 )
+ * text : 개체명 단어
+ * type : 개체명 타입
+ * begin : 개체명을 구성하는 첫형태소 seq
+ * end : 개체명을 구성하는 끝형태소 seq
+ * weight : 개체명 분석결과의 신뢰도
+ * common_noun : 고유명사(0), 일반명사(1)
+ */
+// kor nlp #3
+/**
+ * 어휘의미 분석 정보
+ * seq : wsd 단위 id
+ * text : wsd 대상 단어 텍스트
+ * type : wsd 대상 단어 형태소 태그
+ * scode : wsd 대상 단어의 표준국어대사전 어깨번호
+ * weight : 어휘 의미 분석 결과 신뢰도
+ * position : 문장 내 byte position
+ * begin : wsd 대상 단어의 첫 형태소 seq
+ * end : wsd 대상 단어의 끝 형태소 seq
+ */
+/**
+ * seq : chunk id
+ * type : chunk type
+ * text : chunk 문자열( 형태소 분석 결과로부터 복원)
+ * begin : chunk를 구성하는 첫 형태소 id
+ * end : chunk를 구성하는 끝 형태소 id
+ */
+/**
+ * 의존관계 정보
+ * seq : 어절의 id
+ * text : 어절
+ * head : 부모 어절의 seq
+ * label : 의존관계
+ * mod : 자식 어절의 seq
+ * weight : 의존구문분석 결과 신뢰도 (높을수록 신뢰)
+ */
+// kor nlp #3
+// kor nlp #3
+/**
+ * type : argument type
+ * word_id : argument 어절 id
+ * text : argument 어절
+ */
+/**
+ * 의미역인식 정보
+ * verb : 대상용언
+ * sense : 용언에 대한 의미번호
+ * word_id : 용언 어절 id
+ * weight : 결과에 대한 신뢰도 점수
+ * argument : predicate에 대한 argument 정보
+ */
+// kor nlp #3
+// kor nlp #3
+// kor nlp #3
+// kor nlp #1
+// kor nlp #3
+/**
+ * 무형대용어 복원 정보
+ * seq : 무형대용어 복원 결과 id ( 출현 순서대로)
+ * verb_wid : 문장 내 필수격이 생략된 용언의 어절 번호
+ * ant_sid : 대용어로 인식된 어절을 포함한 선행 문장의 id
+ * and_wid : 선행 문장의 대용어 어절 id
+ * type : verb_wid 용언의 대용어 인식 결과 격 정보 (s:주격, o:목적격)
+ * istitle : 문서의 타이틀이 무형대용어로 이용가능한지 여부(0: 불가능, 1: 가능)와 가능할 경우
+ * ant_sid:-1, ant_wid:-1 일 경우 문서 타이틀을 복원함
+ * weight : 무형대용어 분석 결과 신뢰도
+ */

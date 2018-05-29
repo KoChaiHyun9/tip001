@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/we/wordembedding.proto
+message WordEmbeddingInputText {
+  string text = 1;
+}
+syntax = "proto3";
+package maum.brain.we;

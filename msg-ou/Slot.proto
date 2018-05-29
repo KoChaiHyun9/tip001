@@ -1,0 +1,92 @@
+// /home/test1/koch/proto/maum/brain/sds_train/sdstrainer.proto
+message Slot {
+  // 슬롯 이름
+  string name = 1;
+  // 슬롯에 대한 설명
+  string description = 2;
+  // 사용되는 데이터, 배열 형식
+  repeated SlotData data = 3;
+  // slot값을 채우는 주체
+  SlotSource slot_source = 4;
+  // slot의 자료형
+  SlotType slot_type = 5;
+  // slot 이 속한 class
+  string class_name = 11;
+  // Slot Filling(Form Filling) 방식으로
+  // 진행할 슬롯들을 가진 class인 경우에만 “user”로 표시
+  SlotSource class_source = 12;
+}
+/**
+ * brain-sds-trainer protocol
+ *
+ * <para>
+ * 이 파일은 sds 모델 학습 서비스를 사용하려는
+ * 외부 시스템이 연동하는 통신 규약을 비동기 방식으로 정의하고 있습니다.
+ * </para>
+ *
+ * <para>
+ * 1. 각 학습 모델의 관리 및 상태 조회는 학습 요청시 발급되는 key로 관리가 됩니다.
+ * </para>
+ *
+ * 이 프로토콜을 규격을 수용하는 클라이언트는 grpc 1.6 이상을 사용해서 처리하는 것을
+ * 권장합니다. 양방향 비동기 통신을 하므로 어떤 형태의 메시지가 올지 예상할 수 없으므로
+ * 상태관리에 주의해야 하며 grpc에서 제공하는 풍부한 API를 활용해야 합니다.
+ *
+ * namespace: maum.brain.sds_train
+ */
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+package maum.brain.sds_train;
+// INTERNAL USE ONLY
+// IF REMOTE is not 127.0.0.1, then reject it
+/**
+ * task 수행 여부
+ */
+/**
+ * slot의 자료형
+ */
+/**
+ * slot값을 채우는 주체
+ */
+/**
+ * 현재 task에서 넘어갈 수 있는 다음 task
+ */
+/**
+ * task에 대한 정보
+ */
+/**
+ * slot의 동의어를 정의한다.
+ * slot값을 교정해주는 역할
+ * 예를 들어,
+ * slot_data = "불고기 피자"
+ * synonym = "불고기"
+ * 데이터가 입력되면, 사용자가 '불고기'로 발화시
+ * '불고기 피자'로 slot 값이 채워져 응답 메세지가 출력된다
+ */
+/**
+ * slot을 정의
+ */
+/**
+ * 사용자 발화 중 매핑된 슬롯과 데이터
+ * 예를 들어,
+ * 사용자 발화가 "오늘 <city=서울> 날씨 어때?"일 때,
+ * mapped_slot = "city"
+ * mapped_value = "서울"
+ */
+/**
+ * 사용자 발화 및
+ * 슬롯이 매핑된 발화 메세지
+ * 매핑된 슬롯과 data를 가진다.
+ */
+/**
+ * 대화 의도를 나타냅니다.
+ * 학습 문장 slot이 매핑되어 있는 문장,
+ * intent 정보들이 들어갑니다.
+ */
+/**
+ * 학습 시킬 모델의 정보
+ * 하나의 학습 모델이 된다.
+ */

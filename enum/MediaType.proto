@@ -1,0 +1,17 @@
+// /home/test1/koch/proto/maum/m2u/common/mediatype.proto
+enum MediaType {
+  // Text + Audio
+  ALL = 0;
+  // Only Text
+  TEXT = 1;
+  AUDIO = 2;
+}
+/**
+ * maum.ai M2U 플랫폼의 공통 미디어타입 데이터 정의
+ *
+ * 과거 호환성 유지
+ *
+ * namespace: maum.m2u.common
+ */
+syntax = "proto3";
+package maum.m2u.common;

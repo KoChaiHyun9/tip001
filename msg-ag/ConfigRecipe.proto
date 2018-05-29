@@ -1,0 +1,15 @@
+// /home/test1/koch/proto/maum/common/setup/recipe.proto
+message ConfigRecipe {
+  string name = 1;
+  repeated ConfigFileMap config_files = 11;
+  repeated VariableDefinition variables = 12;
+}
+syntax = "proto3";
+package maum.common.setup;
+import "google/protobuf/timestamp.proto";
+option cc_enable_arenas = true;
+// 설정 파일 변수 처리
+// 입력할 변수에 대한 상세한 정보
+// SETUP 에서 사용할 ConfigRecipe을 로딩하기 위해서 사용합니다.
+// SETUP 과정에서 사용된 변수를 저장하기 위해서 사용합니다.
+/// 설치해야할 패키지에 대한 의존성

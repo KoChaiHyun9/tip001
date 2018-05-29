@@ -1,0 +1,32 @@
+// /home/test1/koch/proto/maum/brain/sds/sds.proto
+message SdsUtter {
+  bool success = 1;
+  string response = 2;
+  string status = 3;
+  string error_message = 4;
+  double confidence = 5;
+  bool unexpected_task_transition = 6;
+  bool non_response = 7;
+  int64 non_response_cnt = 8;
+  string task_turns_warning = 9;
+  int64 task_turns_cnt = 10;
+  string task_repeat_warning = 11;
+  int64 task_repeat_cnt = 12;
+  int64 task_done_repeat_cnt = 13;
+  bool user_utterance_repeated = 14;
+  string current_task = 15;
+  string system_intent = 16;
+  string system_da_type = 17;
+}
+syntax = "proto3";
+package maum.brain.sds;
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";
+import "maum/brain/sds/resolver.proto";
+///
+/// Internal 
+///
+//
+// External
+//

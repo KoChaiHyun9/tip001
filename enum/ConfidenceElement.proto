@@ -1,0 +1,12 @@
+// /home/test1/koch/proto/maum/m2u/server/cl.proto
+enum ConfidenceElement {
+  CE_NONE = 0;
+  CE_STT = 1;
+  CE_SIMPLE_CLASSIFIER = 2;
+  CE_DNN_CLASSIFIER = 3;
+  CE_INTENTION_CLASSIFIER = 4;
+  CE_DIALOG_MANAGER = 5;
+  CE_CHATBOT = 6;
+}
+syntax = "proto3";
+package maum.m2u.server;

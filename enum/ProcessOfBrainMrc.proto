@@ -1,0 +1,72 @@
+// /home/test1/koch/proto/maum/rpc/status.proto
+enum ProcessOfBrainMrc {
+  BRAIN_MRC_MAIN = 0;
+  BRAIN_MRC_CHILD = 1;
+}
+/*
+ * maum.ai 표준 응답코드 체계
+ *
+ *
+ */
+syntax = "proto3";
+package maum.rpc;
+import "google/protobuf/any.proto";
+/**
+ * 마인즈랩 제품
+ * {module}{proc}{hyphen}{code}{error_index}
+ * 2 + 2 + 1 + 3 + 5 : 13자리
+ */
+/**
+ * M2u 프로세스 목록
+ */
+/**
+ * Biz 프로세스 목록
+ */
+/**
+ * Mlt 프로세스 목록
+ */
+/**
+ * Api 프로세스 목록
+ */
+/**
+ * Stt 프로세스 목록
+ */
+/**
+ * stt train 프로세스 목록
+ */
+/**
+ * ta 프로세스 목록
+ */
+/**
+ * ta train 프로세스 목록
+ */
+/**
+ * sds 프로세스 목록
+ */
+/**
+ * sds train 프로세스 목록
+ */
+/**
+ * mrc 프로세스 목록
+ */
+/**
+ * mrc train 프로세스 목록
+ */
+/**
+ * bqa 프로세스 목록
+ */
+/**
+ * eev 프로세스 목록
+ */
+/**
+ *  ExCode 종류
+ */
+/**
+ * ResultStatus 결과
+ */
+/**
+ * grpc Status의 `error_details` 변수에 바이너리 형태로 마샬링되어서 전송되는
+ * 객체. 실지로는 `grpc-status-details-bin` trailing meta 값으로 전달된다.
+ *
+ * 네트워크 호출 스택 구조를 반영하여 하위 호출의 에러를 그대로 담을 수 있다.
+ */

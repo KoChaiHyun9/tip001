@@ -1,0 +1,27 @@
+// /home/test1/koch/proto/maum/m2u/facade/front.proto
+message FeedbackRequest {
+  int32  satisfaction = 1;
+  google.protobuf.Struct meta = 8;
+}
+syntax = "proto3";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+package maum.m2u.facade;
+// result code: toal 8 characters,
+// 377SSNNN
+// 37711123
+// integration error, 77: m2u, 11: SDS, 123: SDS error 123
+// 1 : 1, 2, 3, 4, 5
+// 2 : Generating point : SYS, NET, CL, DA, SDS, EB, MRC, HPN, BOT, DB, EX,
+// 3 : each subsystem, 3 characters
+// 3 000 0001
+// analyze request
+// analyze response
+// make-answer
+// make-answer, peek-answer
+// Structure for STT, IMAGE, TTS processing
+// todo define
+// header: device-token || session-id
+// session based management

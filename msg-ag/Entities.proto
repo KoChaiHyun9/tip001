@@ -1,0 +1,18 @@
+// /home/test1/koch/proto/maum/brain/sds/sds.proto
+message Entities {
+  string model = 1;
+  int64 session_key = 2;
+  map<string, string> entities = 3;
+}
+syntax = "proto3";
+package maum.brain.sds;
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+import "maum/common/types.proto";
+import "maum/brain/sds/resolver.proto";
+///
+/// Internal 
+///
+//
+// External
+//

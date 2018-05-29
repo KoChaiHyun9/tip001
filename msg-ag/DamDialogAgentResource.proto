@@ -1,0 +1,18 @@
+// /home/test1/koch/proto/maum/m2u/server/dam.proto
+message DamDialogAgentResource {
+  string name = 1;
+  string exec_cmd = 2;
+  string full_cmd = 3;
+  string da_spec = 11;
+  maum.m2u.da.DialogAgentProviderSpec da_prod_spec = 100;
+  RuntimeEnvironment runtime_env = 101;
+  string runtime_env_version = 102; // optional version information
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/m2u/common/userattr.proto";
+import "maum/m2u/da/provider.proto";
+package maum.m2u.server;
+//
+// Dialog Agent Manager API
+//

@@ -1,0 +1,16 @@
+// /home/test1/koch/proto/maum/m2u/server/simpleclassifier.proto
+message SkillClass {
+  string chatbot = 1;
+  string text = 2;
+  maum.common.LangCode lang = 3;
+  string skill = 4;
+  // confidence level
+  float confidence_level = 5;
+  ClassifierCode cl_code = 6;
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "maum/common/lang.proto";
+// ==================================================================
+// SIMPLE CLASSIFIER
+// ==================================================================

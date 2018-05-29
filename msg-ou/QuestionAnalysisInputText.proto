@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/question_analysis.proto
+message QuestionAnalysisInputText {
+  string text = 1;
+}
+syntax = "proto3";
+package maum.brain.qa;

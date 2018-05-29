@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/generate_structured_candidate.proto
+service GenerateStructuredCandidateService {
+    rpc MakeCandidate(GenerateStructuredCandidateInput) returns (GenerateStructuredCandidateOutput);
+}
+syntax = "proto3";
+package maum.brain.qa;

@@ -1,0 +1,12 @@
+// /home/test1/koch/proto/maum/m2u/server/simpleclassifier.proto
+message SimpleClassifierStat {
+  SimpleClassifierResult result_code = 1;
+  string detail_message = 2;
+  SimpleClassifierInfo sc_info = 3;
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "maum/common/lang.proto";
+// ==================================================================
+// SIMPLE CLASSIFIER
+// ==================================================================

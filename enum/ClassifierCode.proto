@@ -1,0 +1,13 @@
+// /home/test1/koch/proto/maum/m2u/server/simpleclassifier.proto
+enum ClassifierCode {
+  CL_UNKNOWN = 0;
+  CL_SIMPLE = 1;
+  CL_DNN = 2;
+  CL_INTENTION = 3;
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "maum/common/lang.proto";
+// ==================================================================
+// SIMPLE CLASSIFIER
+// ==================================================================

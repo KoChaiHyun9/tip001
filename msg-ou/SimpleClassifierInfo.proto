@@ -1,0 +1,11 @@
+// /home/test1/koch/proto/maum/m2u/server/simpleclassifier.proto
+message SimpleClassifierInfo {
+  string svc_group = 1;
+  map<string, string> sc_list = 2;
+}
+syntax = "proto3";
+package maum.m2u.server;
+import "maum/common/lang.proto";
+// ==================================================================
+// SIMPLE CLASSIFIER
+// ==================================================================

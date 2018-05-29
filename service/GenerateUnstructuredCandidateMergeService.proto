@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/generate_unstructured_candidate_merge.proto
+service GenerateUnstructuredCandidateMergeService {
+  rpc MergeCandidate(GenerateUnstructuredCandidateMergeInput) returns (GenerateUnstructuredCandidateMergeOutput);
+}
+syntax = "proto3";
+package maum.brain.qa;

@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/brain/qa/generate_unstructured_candidate.proto
+message UnstructuredCandidateInputText {
+  string text = 1;
+}
+syntax = "proto3";
+package maum.brain.qa;

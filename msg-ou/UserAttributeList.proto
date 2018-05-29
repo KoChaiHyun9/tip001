@@ -1,0 +1,6 @@
+// /home/test1/koch/proto/maum/m2u/facade/userattr.proto
+message UserAttributeList {
+  repeated UserAttribute attrs = 1;
+}
+syntax = "proto3";
+package maum.m2u.facade;

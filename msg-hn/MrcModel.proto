@@ -1,0 +1,16 @@
+// /home/test1/koch/proto/maum/brain/mrc/run/tlo/mrc_runner_tlo.proto
+message MrcModel {
+  string model = 1; /// model name should be alphanum
+  maum.common.LangCode lang = 2;
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+package maum.brain.mrc.run.tlo;
+// MRC 모델 로드 시 입력값
+// MRC 모델 ping, stop에 사용
+// MRC 서버 상태
+// MRC 서버 상태 전체
+// MRC Input 질문, 본문
+// 응답 결과
+// MRC Resolver 서비스들

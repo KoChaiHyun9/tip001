@@ -1,0 +1,17 @@
+// /home/test1/koch/proto/maum/m2u/da/provider.proto
+message DialogAgentProviderParam {
+  // program introduction
+  string name = 1;
+  string description = 2;
+  string version = 3;
+  // talk properties used by TalkImpl
+  bool single_turn = 21; // default multi_turn
+  AgentKind agent_kind = 22;
+  bool require_user_privacy = 23;
+  repeated string user_privacy_attributes = 24;
+  DialogAgentProviderSpec spec = 100;
+}
+syntax = "proto3";
+import "maum/common/lang.proto";
+import "maum/m2u/common/userattr.proto";
+package maum.m2u.da;

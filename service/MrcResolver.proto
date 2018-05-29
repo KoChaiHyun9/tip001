@@ -1,0 +1,20 @@
+// /home/test1/koch/proto/maum/brain/mrc/run/tlo/mrc_runner_tlo.proto
+service MrcResolver {
+  rpc SetModel (MrcModel) returns (ServerStatus);
+  rpc GetModel (MrcModelKey) returns (ServerStatus);
+  rpc GetModels (google.protobuf.Empty) returns (ServerStatusList);
+  rpc Stop (MrcModelKey) returns (ServerStatus);
+  // Real MRC 질의응답
+  rpc SendQuestion (MrcInput) returns (MrcOutputs);
+}
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "maum/common/lang.proto";
+package maum.brain.mrc.run.tlo;
+// MRC 모델 로드 시 입력값
+// MRC 모델 ping, stop에 사용
+// MRC 서버 상태
+// MRC 서버 상태 전체
+// MRC Input 질문, 본문
+// 응답 결과
+// MRC Resolver 서비스들

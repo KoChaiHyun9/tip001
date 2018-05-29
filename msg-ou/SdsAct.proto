@@ -1,0 +1,42 @@
+// /home/test1/koch/proto/maum/m2u/sds/sds.proto
+message SdsAct {
+  // if false, see status and error_message
+  bool success = 1;
+  // if no need to fill slots, it is true, response has filled.
+  bool finished = 2;
+  // if finished false, it will be empty.
+  string response = 3;
+  // result of Understand operation
+  string status = 11;
+  // error message of Understand operation
+  string error_message = 12;
+  // diloag act, directive
+  string act = 21;
+  // filled slots, previous dialog
+  map<string, string> filled_slots = 31;
+  // not filled slots
+  repeated string empty_slots = 41;
+  // origin slu
+  string origin_slu = 101;
+  string origin_best_slu = 102;
+  // origin DB_REQUEST
+  string origin_slot = 103;
+}
+syntax = "proto3";
+package maum.m2u.sds;
+//
+// Spoken Dialog System API
+//
+// SDS name resolving query
+// Spoken Dialog Service Resolver
+//
+// It runs child server automatically.
+// Every query should has session_key.
+// this key is created by DialogService
+// first dialog request
+// response about first dialog request
+// secondary slots
+// slots to be filled
+// secondary response message
+// Spoken Dialog Service
+// Real conversation

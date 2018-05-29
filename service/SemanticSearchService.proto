@@ -1,0 +1,8 @@
+// /home/test1/koch/proto/maum/brain/qa/semanticSearch.proto
+service SemanticSearchService {
+  rpc SearchBM25(SemanticSearchInput) returns (SemanticSearchOutput);
+  rpc SearchTIC(SemanticSearchInput) returns (SemanticSearchOutput);
+  rpc SearchBoolean(SemanticSearchInput) returns (SemanticSearchOutput);
+}
+syntax = "proto3";
+package maum.brain.qa;
